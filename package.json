@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-prismicio",
-  "description": "A typography-heavy & light-themed Gatsby Starter which uses the Headless CMS Prismic",
+  "name": "we-three-travel",
+  "description": "A family travel blog based on gatsby and prismic",
   "license": "MIT",
   "version": "1.0.0",
-  "author": "LekoArts <hello@lekoarts.de>",
+  "author": "Randallonius",
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop -o",
@@ -23,7 +23,7 @@
     "emotion-server": "^10.0.7",
     "emotion-theming": "^10.0.7",
     "gatsby": "^2.1.4",
-    "gatsby-image": "^2.0.29",
+    "gatsby-image": "^2.0.30",
     "gatsby-plugin-emotion": "^4.0.3",
     "gatsby-plugin-google-analytics": "^2.0.14",
     "gatsby-plugin-lodash": "^3.0.4",

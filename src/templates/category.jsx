@@ -95,6 +95,23 @@ export const pageQuery = graphql`
                 }
               }
             }
+            body {
+              ... on PrismicPostBodyHeroImage {
+                slice_type
+                id
+                primary {
+                  image {
+                    localFile {
+                      childImageSharp {
+                        fluid(maxWidth: 400, quality: 90) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

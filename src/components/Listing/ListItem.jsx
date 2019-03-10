@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import Categories from './Categories'
+import HeroImageSliceZone from '../HeroImageSliceZone'
 
 const Item = styled.li`
   margin-bottom: 1.45rem;
@@ -20,6 +21,10 @@ const Headline = styled.p`
   }
 `
 
+const ListingHeroImage = styled.div`
+  width: 400px;
+`
+
 const StyledLink = styled(Link)`
   font-size: 2.369rem;
   color: ${props => props.theme.colors.black};
@@ -31,13 +36,16 @@ const StyledLink = styled(Link)`
 
 export default class ListItem extends Component {
   render() {
-    const { node, categories } = this.props
+    const { node, categories, author } = this.props
     return (
       <Item>
         <Headline>
-          {node.data.date} — {categories && <Categories categories={categories} />}
+          {node.data.date} — {categories && <Categories categories={categories} />} - By {author}
         </Headline>
         <StyledLink to={node.uid}>{node.data.title.text}</StyledLink>
+        <ListingHeroImage>
+          <HeroImageSliceZone allHeroImageSlices={node.data.body} />
+        </ListingHeroImage>
       </Item>
     )
   }

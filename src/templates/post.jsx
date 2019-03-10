@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header } from '../components'
+import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header, HeroImageSliceZone } from '../components'
 import Categories from '../components/Listing/Categories'
 import website from '../../config/website'
 
@@ -28,8 +28,12 @@ const PostWrapper = Wrapper.withComponent('main')
 const Post = ({ data: { prismicPost, posts }, location }) => {
   const { data } = prismicPost
   let categories = false
+  let author = false
   if (data.categories[0].category) {
     categories = data.categories.map(c => c.category.document[0].data.name)
+  }
+  if (data.author_group[0].author) {
+    author = data.author_group.map(a => a.author.document[0].data.name)
   }
   return (
     <Layout customSEO>
@@ -44,11 +48,12 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
         <Wrapper>
           <Header />
           <Headline>
-            {data.date} — {categories && <Categories categories={categories} />}
+            {data.date} — {categories && <Categories categories={categories} />} By {author}
           </Headline>
           <h1>{data.title.text}</h1>
         </Wrapper>
       </Hero>
+      <HeroImageSliceZone allHeroImageSlices={data.body} />
       <PostWrapper id={website.skipNavId}>
         <SliceZone allSlices={data.body} />
         <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
@@ -87,6 +92,19 @@ export const pageQuery = graphql`
             document {
               data {
                 name
+              }
+            }
+          }
+        }
+        author_group {
+          author {
+            document {
+              data {
+                name
+                interests
+                stamps
+                favorite_country
+                title
               }
             }
           }
@@ -135,6 +153,21 @@ export const pageQuery = graphql`
               }
             }
           }
+          ... on PrismicPostBodyHeroImage {
+            slice_type
+            id
+            primary {
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 90) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -152,6 +185,33 @@ export const pageQuery = graphql`
                 document {
                   data {
                     name
+                  }
+                }
+              }
+            }
+            author_group {
+              author {
+                document {
+                  data {
+                    name
+                    
+                  }
+                }
+              }
+            }
+            body {
+              ... on PrismicPostBodyHeroImage {
+                slice_type
+                id
+                primary {
+                  image {
+                    localFile {
+                      childImageSharp {
+                        fluid(maxWidth: 400, quality: 90) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                    }
                   }
                 }
               }

@@ -17,10 +17,14 @@ export default class Listing extends Component {
       <List>
         {posts.map(post => {
           let categories = false
+          let author = false
           if (post.node.data.categories[0].category) {
             categories = post.node.data.categories.map(c => c.category.document[0].data.name)
           }
-          return <ListItem key={post.node.uid} node={post.node} categories={categories} />
+          if (post.node.data.author_group[0].author) {
+            author = post.node.data.author_group.map(a => a.author.document[0].data.name)
+          }
+          return <ListItem key={post.node.uid} node={post.node} categories={categories} author={author} />
         })}
       </List>
     )

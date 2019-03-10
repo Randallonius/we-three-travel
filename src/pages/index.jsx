@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import { Layout, Listing, Wrapper, Title } from '../components'
+import { Layout, Listing, Wrapper, Title, HeroImageSliceZone } from '../components'
 import website from '../../config/website'
-
 const Hero = styled.header`
   background-color: ${props => props.theme.colors.greyLight};
   display: flex;
@@ -12,22 +11,14 @@ const Hero = styled.header`
 `
 
 const HeroInner = styled(Wrapper)`
-  padding-top: 13rem;
-  padding-bottom: 13rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   h1 {
     margin-bottom: 2rem;
   }
-  @media (max-width: ${props => props.theme.breakpoints.l}) {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-  }
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-  }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+  @media (min-width: ${props => props.theme.breakpoints.l}) {
+    padding-top: 9rem;
+    padding-bottom: 3rem;
   }
 `
 
@@ -41,6 +32,24 @@ const HeroText = styled.div`
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     font-size: 1.25rem;
   }
+`
+
+const HeroInnerImage = styled.div`
+  @media (min-width: ${props => props.theme.breakpoints.m}) {
+    width: 60%;
+  }
+  @media (min-width: ${props => props.theme.breakpoints.l}) {
+    .css-1b5p2my-Content {
+      position: absolute;
+      top: 80px;
+      width: 600px;
+      right: 80px;
+    }
+  }
+  div {
+    padding: 0;
+  }
+
 `
 
 const Social = styled.ul`
@@ -75,29 +84,12 @@ const Social = styled.ul`
   }
 `
 
-const ProjectListing = styled.ul`
-  list-style-type: none;
-  margin-left: 0;
-  margin-top: 4rem;
-  li {
-    margin-bottom: 1.45rem;
-    a {
-      font-size: 2.369rem;
-      font-style: normal;
-      color: ${props => props.theme.colors.black};
-      @media (max-width: ${props => props.theme.breakpoints.s}) {
-        font-size: 1.777rem;
-      }
-    }
-  }
-`
-
 const IndexWrapper = Wrapper.withComponent('main')
 
 class Index extends Component {
   render() {
     const {
-      data: { homepage, social, posts, projects },
+      data: { homepage, social, posts },
     } = this.props
     return (
       <Layout>
@@ -113,18 +105,13 @@ class Index extends Component {
               ))}
             </Social>
           </HeroInner>
+          <HeroInnerImage>
+            <HeroImageSliceZone allHeroImageSlices={homepage.data.body} />
+          </HeroInnerImage>
         </Hero>
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
           <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
           <Listing posts={posts.edges} />
-          <Title style={{ marginTop: '8rem' }}>Recent projects</Title>
-          <ProjectListing>
-            {projects.edges.map(project => (
-              <li key={project.node.primary.label.text}>
-                <a href={project.node.primary.link.url}>{project.node.primary.label.text}</a>
-              </li>
-            ))}
-          </ProjectListing>
         </IndexWrapper>
       </Layout>
     )
@@ -148,6 +135,23 @@ export const pageQuery = graphql`
         }
         content {
           html
+        }
+        body {
+          ... on PrismicHomepageBodyHeroImage {
+            slice_type
+            id
+            primary {
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 90) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -183,19 +187,35 @@ export const pageQuery = graphql`
                 }
               }
             }
-          }
-        }
-      }
-    }
-    projects: allPrismicProjectsBodyLinkItem {
-      edges {
-        node {
-          primary {
-            label {
-              text
+            author_group {
+              author {
+                document {
+                  data {
+                    name
+                    interests
+                    stamps
+                    favorite_country
+                    title
+                  }
+                }
+              }
             }
-            link {
-              url
+            body {
+              ... on PrismicPostBodyHeroImage {
+                slice_type
+                id
+                primary {
+                  image {
+                    localFile {
+                      childImageSharp {
+                        fluid(maxWidth: 400, quality: 90) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
