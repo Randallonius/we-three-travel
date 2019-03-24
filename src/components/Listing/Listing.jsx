@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import ListItem from './ListItem'
 
-const List = styled.ul`
+const List = styled.div`
   margin-top: 4rem;
   margin-bottom: 4rem;
   list-style-type: none;
   margin-left: 0;
+  display: flex;
+  justify-content: space-between;
 `
 
 export default class Listing extends Component {

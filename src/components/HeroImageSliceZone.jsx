@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { HeroImage} from '../slices'
+import { HeroImage } from '../slices'
 
 const Content = styled.div`
   

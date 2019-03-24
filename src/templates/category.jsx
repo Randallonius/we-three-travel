@@ -95,7 +95,29 @@ export const pageQuery = graphql`
                 }
               }
             }
+            author_group {
+              author {
+                document {
+                  data {
+                    name
+                    interests
+                    stamps
+                    favorite_country
+                    title
+                  }
+                }
+              }
+            }
             body {
+              ... on PrismicPostBodyText{
+                slice_type
+                id
+                primary {
+                  text {
+                    text
+                  }
+                }
+              }
               ... on PrismicPostBodyHeroImage {
                 slice_type
                 id

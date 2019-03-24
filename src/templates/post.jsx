@@ -5,22 +5,56 @@ import styled from '@emotion/styled'
 import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header, HeroImageSliceZone } from '../components'
 import Categories from '../components/Listing/Categories'
 import website from '../../config/website'
-
-const Hero = styled.header`
-  background-color: ${props => props.theme.colors.greyLight};
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-`
+import AsideListing from '../components/Listing/AsideListing';
+import AsideCategories from '../components/Listing/AsideCategories';
 
 const Headline = styled.p`
   font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: ${props => props.theme.colors.grey};
   font-size: 1.25rem;
+  padding-top: 1.45rem;
   a {
     font-style: normal;
     font-weight: normal;
   }
+`
+
+const PostWrapperMain = styled.div`
+  width: 70%;
+`
+
+const PostWrapperMainContent = styled.div`
+  padding: 0 2rem 2rem 2rem;
+  background-color: ${props => props.theme.colors.white};
+`
+
+const PostWrapperTitle = styled.h3`
+`
+
+const PostWrapperAside = styled.div`
+  width: 25%;
+`
+
+const PostWrapperRecent = styled.div`
+
+`
+
+const PostWrapperCategories = styled.div`
+`
+
+const AsideTitle = styled.div`
+  background-color: ${props => props.theme.colors.black};
+`
+
+const AsideTitleText = styled.h4`
+  color: ${props => props.theme.colors.white};
+  padding: 1rem;
+`
+
+const PostWrapperInner = styled.div`
+  display: flex;
+  justify-content: space-between;
 `
 
 const PostWrapper = Wrapper.withComponent('main')
@@ -35,6 +69,7 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
   if (data.author_group[0].author) {
     author = data.author_group.map(a => a.author.document[0].data.name)
   }
+  console.log('>>>POST', data)
   return (
     <Layout customSEO>
       <SEO
@@ -44,20 +79,41 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
         node={prismicPost}
         article
       />
-      <Hero>
+      <Header />
+      {/* <Hero>
         <Wrapper>
-          <Header />
-          <Headline>
-            {data.date} — {categories && <Categories categories={categories} />} By {author}
-          </Headline>
           <h1>{data.title.text}</h1>
         </Wrapper>
-      </Hero>
-      <HeroImageSliceZone allHeroImageSlices={data.body} />
-      <PostWrapper id={website.skipNavId}>
-        <SliceZone allSlices={data.body} />
-        <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
-        <Listing posts={posts.edges} />
+      </Hero> */}
+      <PostWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
+        <PostWrapperInner>
+          <PostWrapperMain>
+            <HeroImageSliceZone allHeroImageSlices={data.body} />
+            <PostWrapperMainContent>
+              <Headline>
+                {data.date} {categories && <span>/</span>} {categories && <Categories categories={categories} />}  / By {author}
+              </Headline>
+              <PostWrapperTitle>{data.title.text}</PostWrapperTitle>
+              <SliceZone allSlices={data.body} />
+            </PostWrapperMainContent>
+          </PostWrapperMain>
+          <PostWrapperAside>
+            <PostWrapperRecent>
+              <AsideTitle>
+                <AsideTitleText>Recent Posts</AsideTitleText>
+              </AsideTitle>
+              <AsideListing posts={posts.edges}/>
+            </PostWrapperRecent>
+            <PostWrapperCategories>
+              <AsideTitle>
+                <AsideTitleText>Categories</AsideTitleText>
+              </AsideTitle>
+              <AsideCategories />
+            </PostWrapperCategories>
+          </PostWrapperAside>
+        </PostWrapperInner>
+        {/* <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
+        <Listing posts={posts.edges} /> */}
       </PostWrapper>
     </Layout>
   )
@@ -72,9 +128,6 @@ Post.propTypes = {
   location: PropTypes.object.isRequired,
 }
 
-// The typenames come from the slice names
-// If this doesn't work for you query for __typename in body {} and GraphiQL will show them to you
-
 export const pageQuery = graphql`
   query PostBySlug($uid: String!) {
     prismicPost(uid: { eq: $uid }) {
@@ -86,7 +139,7 @@ export const pageQuery = graphql`
           text
         }
         description
-        date(formatString: "DD.MM.YYYY")
+        date(formatString: "MMMM DD, YYYY")
         categories {
           category {
             document {
@@ -171,7 +224,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allPrismicPost(limit: 2, sort: { fields: [data___date], order: DESC }) {
+    posts: allPrismicPost(limit: 5, sort: { fields: [data___date], order: DESC }) {
       edges {
         node {
           uid
@@ -200,6 +253,15 @@ export const pageQuery = graphql`
               }
             }
             body {
+              ... on PrismicPostBodyText{
+                slice_type
+                id
+                primary {
+                  text {
+                    text
+                  }
+                }
+              }
               ... on PrismicPostBodyHeroImage {
                 slice_type
                 id

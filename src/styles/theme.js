@@ -1,15 +1,16 @@
 const theme = {
   colors: {
     primary: '#3D63AE',
-    bg: '#fff',
-    black: '#000',
+    bg: '#f5f5f5',
+    black: '#161616',
     greyLight: '#EBEDF2',
     greyBlue: '#a2bce2',
     grey: '#595C62',
     greyDark: '#303643',
     greyDarker: '#1c252b',
+    white: '#fff'
   },
-  maxWidth: '1000px',
+  maxWidth: '1300px',
   maxWidthText: '720px',
   breakpoints: {
     xs: '400px',

@@ -4,16 +4,38 @@ import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import Categories from './Categories'
 import HeroImageSliceZone from '../HeroImageSliceZone'
+import ExcerptSliceZone from '../ExcerptSliceZone';
 
-const Item = styled.li`
+const Item = styled.article`
   margin-bottom: 1.45rem;
+  width: 28%;
+  margin-bottom: 70px;
 `
 
-const Headline = styled.p`
+const ListingHeroImage = styled.div`
+
+`
+
+const ListingText = styled.div`
+  background-color: ${props => props.theme.colors.white};
+`
+
+const ListingTextInner = styled.div`
+text-align: center;
+@media (min-width: ${props => props.theme.breakpoints.m}) {
+  padding: 38px 40px 20px 40px;
+}
+`
+
+const ListingTitle = styled.h4`
+  margin-bottom: 5px;
+`
+
+const ListingInfo = styled.div`
   font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: ${props => props.theme.colors.grey};
-  margin-bottom: 0;
+  margin-bottom: 20px;
   a {
     color: ${props => props.theme.colors.grey};
     font-style: normal;
@@ -21,12 +43,34 @@ const Headline = styled.p`
   }
 `
 
-const ListingHeroImage = styled.div`
-  width: 400px;
+const ListingCategory = styled.span`
+  padding-left: 4px;
+`
+
+const Excerpt = styled.div`
+  font-size: 13px;
+  line-height: 24px;
+
+`
+
+const ListingAuthor = styled.div`
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+`
+
+const ListingAuthorLeft = styled.div`
+  font-size: 12px;
+  text-transform: uppercase;
+`
+
+const ListingAuthorRight = styled.div`
+  font-size: 12px;
+  text-transform: uppercase;
 `
 
 const StyledLink = styled(Link)`
-  font-size: 2.369rem;
+  font-size: 22px;
   color: ${props => props.theme.colors.black};
   font-style: normal;
   @media (max-width: ${props => props.theme.breakpoints.s}) {
@@ -39,13 +83,33 @@ export default class ListItem extends Component {
     const { node, categories, author } = this.props
     return (
       <Item>
-        <Headline>
-          {node.data.date} — {categories && <Categories categories={categories} />} - By {author}
-        </Headline>
-        <StyledLink to={node.uid}>{node.data.title.text}</StyledLink>
         <ListingHeroImage>
           <HeroImageSliceZone allHeroImageSlices={node.data.body} />
         </ListingHeroImage>
+        <ListingText>
+          <ListingTextInner>
+            <ListingTitle>
+              <StyledLink to={node.uid}>{node.data.title.text}</StyledLink>
+            </ListingTitle>
+            {categories && <ListingInfo>
+              <span>In</span>
+              <ListingCategory>
+                {categories && <Categories categories={categories} />}
+              </ListingCategory>
+            </ListingInfo>}
+            <Excerpt>
+              <ExcerptSliceZone excerptSlices={node.data.body} />
+            </Excerpt>
+            <ListingAuthor>
+              <ListingAuthorLeft>
+                By {author}
+              </ListingAuthorLeft>
+              <ListingAuthorRight>
+                {node.data.date}
+              </ListingAuthorRight>
+            </ListingAuthor>
+          </ListingTextInner>
+        </ListingText>
       </Item>
     )
   }
