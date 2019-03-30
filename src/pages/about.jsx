@@ -2,12 +2,19 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import { Layout, Listing, Wrapper, HeroImageSliceZone, Header } from '../components'
-import website from '../../config/website'
+import { Layout, Wrapper, HeroImageSliceZone, Header, AuthorCard } from '../components'
+
+const IndexWrapper = Wrapper.withComponent('main')
+
+const AboutPageWrapper = styled.div`
+  width: 80%;
+  margin: 70px auto;
+`
 
 const Hero = styled.header`
   display: flex;
   align-items: center;
+  padding-bottom: 75px;
 `
 
 const HeroInnerImage = styled.div`
@@ -22,52 +29,81 @@ const HeroInnerImage = styled.div`
   div {
     padding: 0;
   }
+`
+
+const AboutPageContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`
+
+const ContentContainer = styled.div`
+  width: 49%;
+`
+
+const AboutPageTitle = styled.h2`
 
 `
 
-const IndexWrapper = Wrapper.withComponent('main')
+const AboutPageContent = styled.div``
 
-class Index extends Component {
+class About extends Component {
   render() {
     const {
-      data: { homepage, posts },
+      data: { aboutpage, posts },
     } = this.props
     return (
       <Layout>
         <Header />
-        <Hero>
-          <HeroInnerImage>
-            <HeroImageSliceZone allHeroImageSlices={homepage.data.body} />
-          </HeroInnerImage>
-        </Hero>
-        <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-          <Listing posts={posts.edges} />
-        </IndexWrapper>
+        <AboutPageWrapper>
+          <Hero>
+            <HeroInnerImage>
+              <HeroImageSliceZone allHeroImageSlices={aboutpage.data.body} />
+            </HeroInnerImage>
+          </Hero>
+          <AboutPageContainer>
+            <ContentContainer>
+              <AboutPageTitle>{aboutpage.data.about_title.text}</AboutPageTitle>
+              <AboutPageContent dangerouslySetInnerHTML={{ __html: aboutpage.data.about_content.html }}/>
+              {/* <AuthorCard /> */}
+            </ContentContainer>
+            <ContentContainer>
+              <AboutPageTitle>{aboutpage.data.contact_title.text}</AboutPageTitle>
+              <AboutPageContent dangerouslySetInnerHTML={{ __html: aboutpage.data.contact_content.html }} />
+            </ContentContainer>
+          </AboutPageContainer>
+        </AboutPageWrapper>
       </Layout>
     )
   }
 }
 
-export default Index
+export default About
 
-Index.propTypes = {
+About.propTypes = {
   data: PropTypes.shape({
     posts: PropTypes.object.isRequired,
   }).isRequired,
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    homepage: prismicHomepage {
+  query AboutQuery {
+    aboutpage: prismicAboutpage {
       data {
-        title {
+        about_title {
           text
         }
-        content {
+        about_content {
+          html
+        }
+        contact_title {
+          text
+        }
+        contact_content {
           html
         }
         body {
-          ... on PrismicHomepageBodyHeroImage {
+          ... on PrismicAboutpageBodyHeroImage {
             slice_type
             id
             primary {

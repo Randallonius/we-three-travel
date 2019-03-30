@@ -5,10 +5,21 @@ import Typography from 'typography'
 
 const typography = new Typography({
   title: 'We Three Travel',
-  baseFontSize: '18px',
+  baseFontSize: '14px',
   baseLineHeight: 1.45,
+  googleFonts: [
+    {
+      name: 'Poppins',
+      styles: [
+        '400',
+        '400i',
+        '700',
+        '700i',
+      ],
+    },
+  ],
   headerFontFamily: [
-    'Lora',
+    'Poppins',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
@@ -21,7 +32,7 @@ const typography = new Typography({
     'Segoe UI Symbol',
   ],
   bodyFontFamily: [
-    'Lora',
+    'Poppins',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
