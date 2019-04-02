@@ -4,7 +4,7 @@ module.exports = {
   titleAlt: 'We Three Travel', // Title for JSONLD
   description: 'A travel blog that focuses on budget sustainable international travel with a family',
   headline: 'Writing and publishing content for We Three Travel', // Headline for schema.org JSONLD
-  url: 'https://www.wethreetravel.com', // Domain of your site. No trailing slash!
+  url: 'https://www.awesome-austin-cab028.netlify.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   logo: '/logos/logo-1024.png', // Used for SEO
   ogLanguage: 'en_US', // Facebook Language
