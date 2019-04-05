@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { Layout, Listing, Wrapper, HeroImageSliceZone, Header } from '../components'
 import website from '../../config/website'
+import Masonry from 'react-masonry-component'
 
 const Hero = styled.header`
   display: flex;
@@ -41,7 +42,7 @@ class Index extends Component {
           </HeroInnerImage>
         </Hero>
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-          <Listing posts={posts.edges} />
+            <Listing posts={posts.edges} />
         </IndexWrapper>
       </Layout>
     )
