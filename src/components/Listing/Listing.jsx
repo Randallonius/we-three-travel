@@ -8,8 +8,6 @@ const List = styled.div`
   margin-bottom: 4rem;
   list-style-type: none;
   margin-left: 0;
-  display: flex;
-  justify-content: space-between;
 `
 
 export default class Listing extends Component {

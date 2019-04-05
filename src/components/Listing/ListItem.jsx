@@ -7,9 +7,7 @@ import HeroImageSliceZone from '../HeroImageSliceZone'
 import ExcerptSliceZone from '../ExcerptSliceZone';
 
 const Item = styled.article`
-  margin-bottom: 1.45rem;
-  width: 28%;
-  margin-bottom: 70px;
+
 `
 
 const ListingHeroImage = styled.div`
