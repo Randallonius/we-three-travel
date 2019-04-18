@@ -6,7 +6,6 @@ import ListItem from './ListItem'
 import Masonry from 'react-masonry-component'
 
 const List = styled.div`
-  margin-top: 4rem;
   margin-bottom: 4rem;
   list-style-type: none;
   margin-left: 0;

@@ -5,25 +5,6 @@ import styled from '@emotion/styled'
 import { Layout, Listing, Wrapper, Title, SEO, Header } from '../components'
 import website from '../../config/website'
 
-const Hero = styled.header`
-  background-color: ${props => props.theme.colors.primary};
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-  h1 {
-    color: ${props => props.theme.colors.bg};
-  }
-`
-
-const Headline = styled.p`
-  font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  color: ${props => props.theme.colors.greyBlue};
-  font-size: 1.25rem;
-  a {
-    font-style: normal;
-    font-weight: normal;
-  }
-`
 
 const CatWrapper = Wrapper.withComponent('main')
 
@@ -36,13 +17,7 @@ const Category = ({
 }) => (
   <Layout>
     <SEO title={`Category: ${category} | ${website.titleAlt}`} pathname={location.pathname} />
-    <Hero>
-      <Wrapper>
-        <Header invert />
-        <Headline>Category</Headline>
-        <h1>{category}</h1>
-      </Wrapper>
-    </Hero>
+    <Header />
     <CatWrapper id={website.skipNavId}>
       <Title style={{ marginTop: '4rem' }}>
         {totalCount} {totalCount === 1 ? 'Post' : 'Posts'} {totalCount === 1 ? 'was' : 'were'} tagged with "{category}"

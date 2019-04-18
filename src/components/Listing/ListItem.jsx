@@ -7,11 +7,22 @@ import HeroImageSliceZone from '../HeroImageSliceZone'
 import ExcerptSliceZone from '../ExcerptSliceZone';
 
 const Item = styled.div`
+  padding-bottom: 15px;
+
+  @media screen and (max-width: ${props => props.theme.breakpoints.xs}) {
+    width: 100%;
+  }
+
   @media screen and (min-width: ${props => props.theme.breakpoints.s}) {
     box-sizing: border-box;
     width: calc(100% / 2);
     float: left;
     padding-left: 15px;
+  }
+  @media screen and (min-width: ${props => props.theme.breakpoints.m}) {
+    
+    padding-left: 40px;
+    padding-bottom: 40px;
   }
   @media screen and (min-width: ${props => props.theme.breakpoints.l}) {
     width: calc(100% / 3);
@@ -30,7 +41,8 @@ const ListingText = styled.div`
 
 const ListingTextInner = styled.div`
 text-align: center;
-@media (min-width: ${props => props.theme.breakpoints.m}) {
+padding: 38px 40px 20px 40px;
+@media (min-width: ${props => props.theme.breakpoints.s}) {
   padding: 38px 40px 20px 40px;
 }
 `
