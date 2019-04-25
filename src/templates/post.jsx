@@ -4,9 +4,11 @@ import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header, HeroImageSliceZone } from '../components'
 import Categories from '../components/Listing/Categories'
+import Tags from '../components/Listing/Tags'
 import website from '../../config/website'
 import AsideListing from '../components/Listing/AsideListing';
 import AsideCategories from '../components/Listing/AsideCategories';
+import AsideTags from '../components/Listing/AsideTags'
 
 const Headline = styled.p`
   font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
@@ -63,13 +65,16 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
   const { data } = prismicPost
   let categories = false
   let author = false
+  let tags = false
   if (data.categories[0].category) {
     categories = data.categories.map(c => c.category.document[0].data.name)
   }
   if (data.author_group[0].author) {
     author = data.author_group.map(a => a.author.document[0].data.name)
   }
-  console.log('>>>POST', data)
+  if (data.tags[0].tag) {
+    tags = data.tags.map(t => t.tag.document[0].data.name)
+  }
   return (
     <Layout customSEO>
       <SEO
@@ -80,11 +85,6 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
         article
       />
       <Header />
-      {/* <Hero>
-        <Wrapper>
-          <h1>{data.title.text}</h1>
-        </Wrapper>
-      </Hero> */}
       <PostWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
         <PostWrapperInner>
           <PostWrapperMain>
@@ -109,11 +109,15 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
                 <AsideTitleText>Categories</AsideTitleText>
               </AsideTitle>
               <AsideCategories />
+              <AsideTitle>
+                <AsideTitleText>Tags</AsideTitleText>
+              </AsideTitle>
+              <AsideTags />
             </PostWrapperCategories>
           </PostWrapperAside>
         </PostWrapperInner>
-        {/* <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
-        <Listing posts={posts.edges} /> */}
+        <span>Tags:</span>
+        {tags && <Tags tags={tags} />}
       </PostWrapper>
     </Layout>
   )
@@ -142,6 +146,15 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         categories {
           category {
+            document {
+              data {
+                name
+              }
+            }
+          }
+        }
+        tags {
+          tag {
             document {
               data {
                 name

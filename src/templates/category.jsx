@@ -70,6 +70,15 @@ export const pageQuery = graphql`
                 }
               }
             }
+            tags {
+              tag {
+                document {
+                  data {
+                    name
+                  }
+                }
+              }
+            }
             author_group {
               author {
                 document {
