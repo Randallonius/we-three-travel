@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { Layout, Listing, Wrapper, HeroImageSliceZone, Header } from '../components'
 import website from '../../config/website'
-import Masonry from 'react-masonry-component'
 
 const Hero = styled.header`
   display: flex;
@@ -97,6 +96,15 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD YYYY")
             categories {
               category {
+                document {
+                  data {
+                    name
+                  }
+                }
+              }
+            }
+            tags {
+              tag {
                 document {
                   data {
                     name

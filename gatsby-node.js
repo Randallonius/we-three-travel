@@ -17,6 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const postTemplate = path.resolve('src/templates/post.jsx')
   const categoryTemplate = path.resolve('src/templates/category.jsx')
+  const tagTemplate = path.resolve('src/templates/tag.jsx')
 
   const { error, result } = await wrapper(
     graphql(`
@@ -36,6 +37,15 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                   }
                 }
+                tags {
+                  tag {
+                    document {
+                      data {
+                        name
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -46,6 +56,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   if (!error) {
     const categorySet = new Set()
+    const tagSet = new Set()
     const postsList = result.data.allPrismicPost.edges
 
     // Double check that the post has a category assigned
@@ -53,6 +64,12 @@ exports.createPages = async ({ graphql, actions }) => {
       if (edge.node.data.categories[0].category) {
         edge.node.data.categories.forEach(cat => {
           categorySet.add(cat.category.document[0].data.name)
+        })
+      }
+
+      if (edge.node.data.tags[0].tag) {
+        edge.node.data.tags.forEach(t => {
+          tagSet.add(t.tag.document[0].data.name)
         })
       }
 
@@ -75,6 +92,18 @@ exports.createPages = async ({ graphql, actions }) => {
         component: categoryTemplate,
         context: {
           category,
+        },
+      })
+    })
+
+    const tagList = Array.from(tagSet)
+
+    tagList.forEach(tag => {
+      createPage({
+        path: `/tags/${_.kebabCase(tag)}`,
+        component: tagTemplate,
+        context: {
+          tag,
         },
       })
     })
