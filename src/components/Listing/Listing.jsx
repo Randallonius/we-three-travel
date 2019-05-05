@@ -33,7 +33,7 @@ export default class Listing extends Component {
           if (post.node.data.author_group[0].author) {
             author = post.node.data.author_group.map(a => a.author.document[0].data.name)
           }
-          return <ListItem key={post.node.uid} node={post.node} categories={categories} author={author}/>
+          return <ListItem key={post.node.uid} node={post.node} categories={categories} author={author} location={location}/>
         })}
         </Masonry>
       </List>
@@ -43,4 +43,5 @@ export default class Listing extends Component {
 
 Listing.propTypes = {
   posts: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
 }

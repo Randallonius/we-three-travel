@@ -59,6 +59,19 @@ const PostWrapperInner = styled.div`
   justify-content: space-between;
 `
 
+const PostTags = styled.section`
+  display: flex;
+  align-items: center;
+  margin-top: 1.944em;
+  a {
+    margin-bottom: 0;
+  }
+  h5 {
+    margin: 0;
+    padding-right: 0.375em;
+  }
+`
+
 const PostWrapper = Wrapper.withComponent('main')
 
 const Post = ({ data: { prismicPost, posts }, location }) => {
@@ -85,7 +98,7 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
         article
       />
       <Header />
-      <PostWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
+      <PostWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem', paddingLeft: '0', paddingRight: '0' }}>
         <PostWrapperInner>
           <PostWrapperMain>
             <HeroImageSliceZone allHeroImageSlices={data.body} />
@@ -96,6 +109,10 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
               <PostWrapperTitle>{data.title.text}</PostWrapperTitle>
               <SliceZone allSlices={data.body} />
             </PostWrapperMainContent>
+            <PostTags>
+              <h5>Tags:</h5>
+              {tags && <Tags tags={tags} />}
+            </PostTags>
           </PostWrapperMain>
           <PostWrapperAside>
             <PostWrapperRecent>
@@ -116,8 +133,6 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
             </PostWrapperCategories>
           </PostWrapperAside>
         </PostWrapperInner>
-        <span>Tags:</span>
-        {tags && <Tags tags={tags} />}
       </PostWrapper>
     </Layout>
   )

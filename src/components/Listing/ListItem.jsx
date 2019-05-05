@@ -8,26 +8,29 @@ import ExcerptSliceZone from '../ExcerptSliceZone';
 
 const Item = styled.div`
   padding-bottom: 15px;
-
-  @media screen and (max-width: ${props => props.theme.breakpoints.xs}) {
-    width: 100%;
-  }
-
-  @media screen and (min-width: ${props => props.theme.breakpoints.s}) {
-    box-sizing: border-box;
-    width: calc(100% / 2);
-    float: left;
-    padding-left: 15px;
-  }
-  @media screen and (min-width: ${props => props.theme.breakpoints.m}) {
-    
-    padding-left: 40px;
-    padding-bottom: 40px;
-  }
-  @media screen and (min-width: ${props => props.theme.breakpoints.l}) {
-    width: calc(100% / 3);
-    padding-left: 40px;
-    padding-bottom: 40px;
+  width: 100%;
+  
+  &.masonry {
+    @media screen and (max-width: ${props => props.theme.breakpoints.xs}) {
+      width: 100%;
+    }
+  
+    @media screen and (min-width: ${props => props.theme.breakpoints.s}) {
+      box-sizing: border-box;
+      width: calc(100% / 2);
+      float: left;
+      padding-left: 15px;
+    }
+    @media screen and (min-width: ${props => props.theme.breakpoints.m}) {
+      padding-left: 40px;
+      padding-bottom: 40px;
+    }
+    @media screen and (min-width: ${props => props.theme.breakpoints.l}) {
+      width: calc(100% / 3);
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-bottom: 50px;
+    } 
   }
 `
 
@@ -52,14 +55,21 @@ const ListingTitle = styled.h4`
 `
 
 const ListingInfo = styled.div`
-  font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: ${props => props.theme.colors.grey};
+  font-weight: 700;
   margin-bottom: 20px;
+  text-transform: uppercase;
   a {
     color: ${props => props.theme.colors.grey};
     font-style: normal;
-    font-weight: normal;
+    transition: all 0.25s ease-in-out;
+    &:hover,
+    &:focus {
+      color: ${props => props.theme.colors.primary};
+      text-decoration: none;
+    }
+  }
+  span {
   }
 `
 
@@ -93,6 +103,12 @@ const StyledLink = styled(Link)`
   font-size: 22px;
   color: ${props => props.theme.colors.black};
   font-style: normal;
+  transition: all 0.25s ease-in-out;
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.grey};
+    text-decoration: none;
+  }
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     font-size: 1.777rem;
   }
@@ -100,9 +116,11 @@ const StyledLink = styled(Link)`
 
 export default class ListItem extends Component {
   render() {
-    const { node, categories, author } = this.props
+    const { node, categories, author, location } = this.props
+    const rootPath = location.pathname !== ('/');
+    const listSize = rootPath ? 'full' : 'masonry';
     return (
-      <Item>
+      <Item className={listSize}>
         <ListingHeroImage>
           <HeroImageSliceZone allHeroImageSlices={node.data.body} />
         </ListingHeroImage>
@@ -138,4 +156,5 @@ export default class ListItem extends Component {
 ListItem.propTypes = {
   node: PropTypes.object.isRequired,
   categories: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
 }
