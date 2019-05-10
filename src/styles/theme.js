@@ -17,7 +17,7 @@ const theme = {
     xs: '400px',
     s: '600px',
     m: '900px',
-    l: '1200px',
+    l: '1350px',
   },
 }
 

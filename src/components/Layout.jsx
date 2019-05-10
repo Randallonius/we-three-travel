@@ -40,7 +40,6 @@ const globalStyle = css`
     color: ${theme.colors.grey};
     transition: all 0.25s ease-in-out;
     text-decoration: none;
-    font-weight: 700;
     &:hover,
     &:focus {
       color: ${theme.colors.primary};

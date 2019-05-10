@@ -13,23 +13,32 @@ const FooterContainer = styled.div`
   padding: 3% 4%;
   background: white;
   justify-content: space-evenly;
+`
 
-  div {
-    height: 200px;
-    width: 200px;
-  }
+const FooterContainerInner = styled.div`
+  display: grid;
+  grid-template-rows: 30% 70%;
+  text-align: center;
+  height: 200px;
+  width: 200px;
 `
 
 const FooterTitle = styled.h4`
   font-size: 14px;
+  margin-top: 1.45rem;
 `
-
-const FooterContainerInner = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+const FooterLinks = styled.div`
+  p {
+    color: ${props => props.theme.colors.grey};
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  a {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.875em;
+    font-weight: 700;
+  }
 `
 
 class Footer extends Component {
@@ -39,12 +48,17 @@ class Footer extends Component {
       <FooterContainer>
         <FooterContainerInner>
           <FooterTitle>FAQS</FooterTitle>
-          <Link to="/about" aria-label="To About Page">Who are we and what are we doing?</Link>
-          <Link to="/about" aria-label="To About Page">Contact Us</Link>
+          <FooterLinks>
+            <Link to="/about" aria-label="To About Page">Who are we and what are we doing?</Link>
+            <Link to="/about" aria-label="To About Page">Contact Us</Link>
+          </FooterLinks>
         </FooterContainerInner>
         <FooterContainerInner>
           <FooterTitle>Follow Us</FooterTitle>
-          <p>Email Us</p>
+          <FooterLinks>
+            <p>Want a more social experience?</p>
+            <Link to="/about" aria-label="To About Page">Email Us</Link>
+          </FooterLinks>
         </FooterContainerInner>
       </FooterContainer>
     </StyledFooter>

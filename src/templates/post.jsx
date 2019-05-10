@@ -11,19 +11,26 @@ import AsideCategories from '../components/Listing/AsideCategories';
 import AsideTags from '../components/Listing/AsideTags'
 
 const Headline = styled.p`
-  font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: ${props => props.theme.colors.grey};
-  font-size: 1.25rem;
+  
   padding-top: 1.45rem;
+  @media (min-width: ${props => props.theme.breakpoints.l}) {
+    font-size: 1.25rem;
+  }
   a {
     font-style: normal;
     font-weight: normal;
   }
+  span, a {
+    margin-right: 5px;
+  }
 `
 
 const PostWrapperMain = styled.div`
-  width: 70%;
+  width: 100%;
+  @media (min-width: ${props => props.theme.breakpoints.m}) {
+    width: 70%;
+  }
 `
 
 const PostWrapperMainContent = styled.div`
@@ -31,18 +38,16 @@ const PostWrapperMainContent = styled.div`
   background-color: ${props => props.theme.colors.white};
 `
 
-const PostWrapperTitle = styled.h3`
-`
-
 const PostWrapperAside = styled.div`
-  width: 25%;
+  display: none;
+  @media (min-width: ${props => props.theme.breakpoints.m}) {
+    display: block;
+    width: 25%;
+  }
 `
 
-const PostWrapperRecent = styled.div`
-
-`
-
-const PostWrapperCategories = styled.div`
+const PostWrapperSection = styled.div`
+  margin-bottom: 1.45rem;
 `
 
 const AsideTitle = styled.div`
@@ -98,15 +103,15 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
         article
       />
       <Header />
-      <PostWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem', paddingLeft: '0', paddingRight: '0' }}>
+      <PostWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
         <PostWrapperInner>
           <PostWrapperMain>
             <HeroImageSliceZone allHeroImageSlices={data.body} />
             <PostWrapperMainContent>
               <Headline>
-                {data.date} {categories && <span>/</span>} {categories && <Categories categories={categories} />}  / By {author}
+                <span>{data.date}</span> {categories && <span>/</span>} {categories && <Categories categories={categories} />} <span>/</span> <span>By {author}</span>
               </Headline>
-              <PostWrapperTitle>{data.title.text}</PostWrapperTitle>
+              <h3>{data.title.text}</h3>
               <SliceZone allSlices={data.body} />
             </PostWrapperMainContent>
             <PostTags>
@@ -115,22 +120,24 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
             </PostTags>
           </PostWrapperMain>
           <PostWrapperAside>
-            <PostWrapperRecent>
+            <PostWrapperSection>
               <AsideTitle>
                 <AsideTitleText>Recent Posts</AsideTitleText>
               </AsideTitle>
               <AsideListing posts={posts.edges}/>
-            </PostWrapperRecent>
-            <PostWrapperCategories>
+            </PostWrapperSection>
+            <PostWrapperSection>
               <AsideTitle>
                 <AsideTitleText>Categories</AsideTitleText>
               </AsideTitle>
               <AsideCategories />
+            </PostWrapperSection> 
+            <PostWrapperSection>
               <AsideTitle>
                 <AsideTitleText>Tags</AsideTitleText>
               </AsideTitle>
               <AsideTags />
-            </PostWrapperCategories>
+            </PostWrapperSection>    
           </PostWrapperAside>
         </PostWrapperInner>
       </PostWrapper>

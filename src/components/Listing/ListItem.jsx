@@ -56,6 +56,7 @@ const ListingTitle = styled.h4`
 
 const ListingInfo = styled.div`
   color: ${props => props.theme.colors.grey};
+  font-size: 12px;
   font-weight: 700;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -68,8 +69,6 @@ const ListingInfo = styled.div`
       color: ${props => props.theme.colors.primary};
       text-decoration: none;
     }
-  }
-  span {
   }
 `
 
