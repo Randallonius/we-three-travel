@@ -1,3 +1,4 @@
+import Aside from './Aside'
 import Listing from './Listing'
 import SEO from './SEO'
 import Footer from './Footer'
@@ -9,4 +10,4 @@ import Wrapper from './Wrapper'
 import HeroImageSliceZone from './HeroImageSliceZone'
 import AuthorCard from './authorCard'
 
-export { Footer, Layout, Listing, SEO, Wrapper, SliceZone, Title, Header, HeroImageSliceZone, AuthorCard }
+export { Footer, Layout, Listing, SEO, Wrapper, SliceZone, Title, Header, HeroImageSliceZone, AuthorCard, Aside }
