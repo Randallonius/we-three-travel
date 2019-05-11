@@ -37,7 +37,7 @@ const Tag = ({
           <Title>
             {totalCount} {totalCount === 1 ? 'Post' : 'Posts'} {totalCount === 1 ? 'was' : 'were'} tagged with "{tag}"
           </Title>
-          <Listing posts={edges} />
+          <Listing posts={edges} location={location}/>
         </TagWrapperContent>
         <AsideLayout posts={asidePosts.edges}/>
       </TagWrapperContainer>

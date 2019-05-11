@@ -43,7 +43,6 @@ const FooterLinks = styled.div`
 
 class Footer extends Component {
   render() {
-    const { children } = this.props
     return <StyledFooter>
       <FooterContainer>
         <FooterContainerInner>
@@ -66,7 +65,3 @@ class Footer extends Component {
 }
 
 export default Footer
-
-Footer.propTypes = {
-  children: PropTypes.node.isRequired,
-}

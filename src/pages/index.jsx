@@ -30,7 +30,8 @@ const IndexWrapper = Wrapper.withComponent('main')
 class Index extends Component {
   render() {
     const {
-      data: { homepage, posts, location },
+      data: { homepage, posts },
+      location
     } = this.props
     return (
       <Layout>
@@ -54,6 +55,7 @@ Index.propTypes = {
   data: PropTypes.shape({
     posts: PropTypes.object.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

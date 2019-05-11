@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
 import ListItem from './ListItem'
 import Masonry from 'react-masonry-component'
 
@@ -20,7 +19,7 @@ const List = styled.div`
 
 export default class Listing extends Component {
   render() {
-    const { posts } = this.props
+    const { posts, location } = this.props
     return (
       <List>
         <Masonry>

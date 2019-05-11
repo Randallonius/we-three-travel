@@ -34,10 +34,6 @@ const Item = styled.div`
   }
 `
 
-const ListingHeroImage = styled.div`
-
-`
-
 const ListingText = styled.div`
   background-color: ${props => props.theme.colors.white};
 `
@@ -86,14 +82,6 @@ const ListingAuthor = styled.div`
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
-`
-
-const ListingAuthorLeft = styled.div`
-  font-size: 12px;
-  text-transform: uppercase;
-`
-
-const ListingAuthorRight = styled.div`
   font-size: 12px;
   text-transform: uppercase;
 `
@@ -116,13 +104,12 @@ const StyledLink = styled(Link)`
 export default class ListItem extends Component {
   render() {
     const { node, categories, author, location } = this.props
-    const rootPath = location.pathname !== ('/');
-    const listSize = rootPath ? 'full' : 'masonry';
+    const listSize = location.pathname === ('/') ? 'masonry' : 'full';
     return (
       <Item className={listSize}>
-        <ListingHeroImage>
+        <div>
           <HeroImageSliceZone allHeroImageSlices={node.data.body} />
-        </ListingHeroImage>
+        </div>
         <ListingText>
           <ListingTextInner>
             <ListingTitle>
@@ -138,12 +125,12 @@ export default class ListItem extends Component {
               <ExcerptSliceZone excerptSlices={node.data.body} />
             </Excerpt>
             <ListingAuthor>
-              <ListingAuthorLeft>
+              <div>
                 By {author}
-              </ListingAuthorLeft>
-              <ListingAuthorRight>
+              </div>
+              <div>
                 {node.data.date}
-              </ListingAuthorRight>
+              </div>
             </ListingAuthor>
           </ListingTextInner>
         </ListingText>
