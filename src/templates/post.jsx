@@ -2,13 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header, HeroImageSliceZone } from '../components'
+import { Layout, Wrapper, SliceZone, SEO, Header, HeroImageSliceZone } from '../components'
 import Categories from '../components/Listing/Categories'
 import Tags from '../components/Listing/Tags'
 import website from '../../config/website'
-import AsideListing from '../components/Listing/AsideListing';
-import AsideCategories from '../components/Listing/AsideCategories';
-import AsideTags from '../components/Listing/AsideTags'
+import AsideLayout from '../components/Aside/AsideLayout'
 
 const Headline = styled.p`
   color: ${props => props.theme.colors.grey};
@@ -36,27 +34,6 @@ const PostWrapperMain = styled.div`
 const PostWrapperMainContent = styled.div`
   padding: 0 2rem 2rem 2rem;
   background-color: ${props => props.theme.colors.white};
-`
-
-const PostWrapperAside = styled.div`
-  display: none;
-  @media (min-width: ${props => props.theme.breakpoints.m}) {
-    display: block;
-    width: 25%;
-  }
-`
-
-const PostWrapperSection = styled.div`
-  margin-bottom: 1.45rem;
-`
-
-const AsideTitle = styled.div`
-  background-color: ${props => props.theme.colors.black};
-`
-
-const AsideTitleText = styled.h4`
-  color: ${props => props.theme.colors.white};
-  padding: 1rem;
 `
 
 const PostWrapperInner = styled.div`
@@ -119,26 +96,7 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
               {tags && <Tags tags={tags} />}
             </PostTags>
           </PostWrapperMain>
-          <PostWrapperAside>
-            <PostWrapperSection>
-              <AsideTitle>
-                <AsideTitleText>Recent Posts</AsideTitleText>
-              </AsideTitle>
-              <AsideListing posts={posts.edges}/>
-            </PostWrapperSection>
-            <PostWrapperSection>
-              <AsideTitle>
-                <AsideTitleText>Categories</AsideTitleText>
-              </AsideTitle>
-              <AsideCategories />
-            </PostWrapperSection> 
-            <PostWrapperSection>
-              <AsideTitle>
-                <AsideTitleText>Tags</AsideTitleText>
-              </AsideTitle>
-              <AsideTags />
-            </PostWrapperSection>    
-          </PostWrapperAside>
+          <AsideLayout posts={posts.edges}/>
         </PostWrapperInner>
       </PostWrapper>
     </Layout>
