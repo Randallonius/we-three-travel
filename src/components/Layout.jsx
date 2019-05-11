@@ -21,6 +21,9 @@ const globalStyle = css`
   h1, h2, h3, h4, h5, h6 {
     color: ${theme.colors.black};
   }
+  h5 {
+    font-size: 1.125em;
+  }
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -34,15 +37,18 @@ const globalStyle = css`
     background-color: ${theme.colors.primary};
   }
   a {
-    color: ${theme.colors.primary};
-    transition: all 0.4s ease-in-out;
+    color: ${theme.colors.grey};
+    transition: all 0.25s ease-in-out;
     text-decoration: none;
-    font-weight: 700;
-    font-style: italic;
     &:hover,
     &:focus {
-      text-decoration: underline;
+      color: ${theme.colors.primary};
+      text-decoration: none;
     }
+  }
+  p {
+    font-size: 0.875em;
+    line-height: 1.5em;
   }
   @media (max-width: ${theme.breakpoints.m}) {
     html {
@@ -79,7 +85,6 @@ const PureLayout = ({ children, data, customSEO }) => (
       {!customSEO && <SEO />}
       {children}
       <Footer>
-        <div dangerouslySetInnerHTML={{ __html: data.prismicHomepage.data.footer.html }} />
       </Footer>
     </>
   </ThemeProvider>
