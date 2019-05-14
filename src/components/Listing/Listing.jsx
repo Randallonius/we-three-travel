@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import ListItem from './ListItem'
 import Masonry from 'react-masonry-component'
 
@@ -19,7 +20,7 @@ const List = styled.div`
 
 export default class Listing extends Component {
   render() {
-    const { posts, location } = this.props
+    const { posts } = this.props
     return (
       <List>
         <Masonry>
@@ -32,7 +33,7 @@ export default class Listing extends Component {
           if (post.node.data.author_group[0].author) {
             author = post.node.data.author_group.map(a => a.author.document[0].data.name)
           }
-          return <ListItem key={post.node.uid} node={post.node} categories={categories} author={author} location={location}/>
+          return <ListItem key={post.node.uid} node={post.node} categories={categories} author={author}/>
         })}
         </Masonry>
       </List>
@@ -42,5 +43,4 @@ export default class Listing extends Component {
 
 Listing.propTypes = {
   posts: PropTypes.array.isRequired,
-  location: PropTypes.object.isRequired,
 }

@@ -8,9 +8,11 @@ const Content = styled.div`
   ${prism};
   p,
   li {
+    letter-spacing: -0.003em;
     --baseline-multiplier: 0.179;
     --x-height-multiplier: 0.35;
-    line-height: 1.58em;
+    font-size: 21px;
+    line-height: 1.58;
     code {
       padding: 0.2rem 0.5rem;
       margin: 0.5rem 0;

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
 import styled from '@emotion/styled'
-import StyledTagLink from '../../styles/styledTagLink'
 
 const Tag = styled(Link)`
   padding: 0 15px;
@@ -22,7 +21,7 @@ export default class Tags extends Component {
       <>
         {tags.map((tag) => (
           <React.Fragment key={tag}>
-            <StyledTagLink to={`/tags/${kebabCase(tag)}`}>{tag}</StyledTagLink>
+            <Tag to={`/tags/${kebabCase(tag)}`}>{tag}</Tag>
           </React.Fragment>
         ))}
       </>

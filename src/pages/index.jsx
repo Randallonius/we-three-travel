@@ -31,7 +31,6 @@ class Index extends Component {
   render() {
     const {
       data: { homepage, posts },
-      location
     } = this.props
     return (
       <Layout>
@@ -42,7 +41,7 @@ class Index extends Component {
           </HeroInnerImage>
         </Hero>
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-            <Listing posts={posts.edges} location={location}/>
+            <Listing posts={posts.edges} />
         </IndexWrapper>
       </Layout>
     )
@@ -55,7 +54,6 @@ Index.propTypes = {
   data: PropTypes.shape({
     posts: PropTypes.object.isRequired,
   }).isRequired,
-  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`
@@ -76,7 +74,7 @@ export const pageQuery = graphql`
               image {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 800, quality: 90) {
+                    fluid(maxWidth: 1200, quality: 90) {
                       ...GatsbyImageSharpFluid_withWebp
                     }
                   }

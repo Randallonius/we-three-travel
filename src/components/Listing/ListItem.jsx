@@ -8,30 +8,31 @@ import ExcerptSliceZone from '../ExcerptSliceZone';
 
 const Item = styled.div`
   padding-bottom: 15px;
-  width: 100%;
-  
-  &.masonry {
-    @media screen and (max-width: ${props => props.theme.breakpoints.xs}) {
-      width: 100%;
-    }
-  
-    @media screen and (min-width: ${props => props.theme.breakpoints.s}) {
-      box-sizing: border-box;
-      width: calc(100% / 2);
-      float: left;
-      padding-left: 15px;
-    }
-    @media screen and (min-width: ${props => props.theme.breakpoints.m}) {
-      padding-left: 40px;
-      padding-bottom: 40px;
-    }
-    @media screen and (min-width: ${props => props.theme.breakpoints.l}) {
-      width: calc(100% / 3);
-      padding-left: 25px;
-      padding-right: 25px;
-      padding-bottom: 50px;
-    } 
+
+  @media screen and (max-width: ${props => props.theme.breakpoints.xs}) {
+    width: 100%;
   }
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.s}) {
+    box-sizing: border-box;
+    width: calc(100% / 2);
+    float: left;
+    padding-left: 15px;
+  }
+  @media screen and (min-width: ${props => props.theme.breakpoints.m}) {
+    
+    padding-left: 40px;
+    padding-bottom: 40px;
+  }
+  @media screen and (min-width: ${props => props.theme.breakpoints.l}) {
+    width: calc(100% / 3);
+    padding-left: 40px;
+    padding-bottom: 40px;
+  }
+`
+
+const ListingHeroImage = styled.div`
+
 `
 
 const ListingText = styled.div`
@@ -51,20 +52,14 @@ const ListingTitle = styled.h4`
 `
 
 const ListingInfo = styled.div`
+  font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: ${props => props.theme.colors.grey};
-  font-size: 12px;
-  font-weight: 700;
   margin-bottom: 20px;
-  text-transform: uppercase;
   a {
     color: ${props => props.theme.colors.grey};
     font-style: normal;
-    transition: all 0.25s ease-in-out;
-    &:hover,
-    &:focus {
-      color: ${props => props.theme.colors.primary};
-      text-decoration: none;
-    }
+    font-weight: normal;
   }
 `
 
@@ -82,6 +77,14 @@ const ListingAuthor = styled.div`
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
+`
+
+const ListingAuthorLeft = styled.div`
+  font-size: 12px;
+  text-transform: uppercase;
+`
+
+const ListingAuthorRight = styled.div`
   font-size: 12px;
   text-transform: uppercase;
 `
@@ -90,12 +93,6 @@ const StyledLink = styled(Link)`
   font-size: 22px;
   color: ${props => props.theme.colors.black};
   font-style: normal;
-  transition: all 0.25s ease-in-out;
-  &:hover,
-  &:focus {
-    color: ${props => props.theme.colors.grey};
-    text-decoration: none;
-  }
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     font-size: 1.777rem;
   }
@@ -103,13 +100,12 @@ const StyledLink = styled(Link)`
 
 export default class ListItem extends Component {
   render() {
-    const { node, categories, author, location } = this.props
-    const listSize = location.pathname === ('/') ? 'masonry' : 'full';
+    const { node, categories, author } = this.props
     return (
-      <Item className={listSize}>
-        <div>
+      <Item>
+        <ListingHeroImage>
           <HeroImageSliceZone allHeroImageSlices={node.data.body} />
-        </div>
+        </ListingHeroImage>
         <ListingText>
           <ListingTextInner>
             <ListingTitle>
@@ -125,12 +121,12 @@ export default class ListItem extends Component {
               <ExcerptSliceZone excerptSlices={node.data.body} />
             </Excerpt>
             <ListingAuthor>
-              <div>
+              <ListingAuthorLeft>
                 By {author}
-              </div>
-              <div>
+              </ListingAuthorLeft>
+              <ListingAuthorRight>
                 {node.data.date}
-              </div>
+              </ListingAuthorRight>
             </ListingAuthor>
           </ListingTextInner>
         </ListingText>
@@ -142,5 +138,4 @@ export default class ListItem extends Component {
 ListItem.propTypes = {
   node: PropTypes.object.isRequired,
   categories: PropTypes.array.isRequired,
-  location: PropTypes.object.isRequired,
 }
