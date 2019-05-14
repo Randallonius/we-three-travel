@@ -2,11 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { Layout, Wrapper, SliceZone, SEO, Header, HeroImageSliceZone } from '../components'
+import { Layout, Wrapper, SliceZone, SEO, Header, HeroImageSliceZone, AsideLayout } from '../components'
 import Categories from '../components/Listing/Categories'
 import Tags from '../components/Listing/Tags'
 import website from '../../config/website'
-import AsideLayout from '../components/Aside/AsideLayout'
 
 const Headline = styled.p`
   color: ${props => props.theme.colors.grey};

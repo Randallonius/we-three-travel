@@ -3,6 +3,6 @@ import Listing from './Listing'
 import ListItem from './ListItem'
 import Tags from './Tags'
 
-export { Categories, Listing, ListItem, Tags }
+export { Categories, ListItem, Tags }
 
 export default Listing

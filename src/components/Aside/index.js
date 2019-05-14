@@ -3,6 +3,6 @@ import AsideCategories from './AsideCategories'
 import AsideListing from './AsideListing'
 import AsideTags from './AsideTags'
 
-export { AsideLayout, AsideCategories, AsideListing, AsideTags }
+export { AsideCategories, AsideListing, AsideTags }
 
-export default AsideListing
+export default AsideLayout
