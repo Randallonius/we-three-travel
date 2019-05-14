@@ -41,7 +41,7 @@ const Category = ({
           </Title>
           <Listing posts={edges} />
         </CatWrapperContent>
-        <AsideLayout posts={asidePosts.edges}/>
+        {/* <AsideLayout posts={asidePosts.edges}/> */}
       </CatWrapperContainer>
     </CatWrapper>
   </Layout>

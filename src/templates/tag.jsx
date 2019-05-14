@@ -39,7 +39,7 @@ const Tag = ({
           </Title>
           <Listing posts={edges} location={location}/>
         </TagWrapperContent>
-        <AsideLayout posts={asidePosts.edges}/>
+        {/* <AsideLayout posts={asidePosts.edges}/> */}
       </TagWrapperContainer>
     </TagWrapper>
   </Layout>
