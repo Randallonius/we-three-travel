@@ -8,5 +8,6 @@ import Layout from './Layout'
 import Wrapper from './Wrapper'
 import HeroImageSliceZone from './HeroImageSliceZone'
 import AuthorCard from './authorCard'
+import AsideLayout from './Aside'
 
-export { Footer, Layout, Listing, SEO, Wrapper, SliceZone, Title, Header, HeroImageSliceZone, AuthorCard }
+export { Footer, Layout, Listing, SEO, Wrapper, SliceZone, Title, Header, HeroImageSliceZone, AuthorCard, AsideLayout }
