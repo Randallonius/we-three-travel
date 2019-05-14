@@ -2,33 +2,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { Layout, Wrapper, SliceZone, SEO, Header, HeroImageSliceZone } from '../components'
+import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header, HeroImageSliceZone } from '../components'
 import Categories from '../components/Listing/Categories'
 import Tags from '../components/Listing/Tags'
 import website from '../../config/website'
-import AsideLayout from '../components/Aside/AsideLayout'
+import AsideListing from '../components/Listing/AsideListing';
+import AsideCategories from '../components/Listing/AsideCategories';
+import AsideTags from '../components/Listing/AsideTags'
 
 const Headline = styled.p`
+  font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: ${props => props.theme.colors.grey};
-  
+  font-size: 1.25rem;
   padding-top: 1.45rem;
-  @media (min-width: ${props => props.theme.breakpoints.l}) {
-    font-size: 1.25rem;
-  }
   a {
     font-style: normal;
     font-weight: normal;
   }
-  span, a {
-    margin-right: 5px;
-  }
 `
 
 const PostWrapperMain = styled.div`
-  width: 100%;
-  @media (min-width: ${props => props.theme.breakpoints.m}) {
-    width: 70%;
-  }
+  width: 70%;
 `
 
 const PostWrapperMainContent = styled.div`
@@ -36,22 +31,32 @@ const PostWrapperMainContent = styled.div`
   background-color: ${props => props.theme.colors.white};
 `
 
+const PostWrapperTitle = styled.h3`
+`
+
+const PostWrapperAside = styled.div`
+  width: 25%;
+`
+
+const PostWrapperRecent = styled.div`
+
+`
+
+const PostWrapperCategories = styled.div`
+`
+
+const AsideTitle = styled.div`
+  background-color: ${props => props.theme.colors.black};
+`
+
+const AsideTitleText = styled.h4`
+  color: ${props => props.theme.colors.white};
+  padding: 1rem;
+`
+
 const PostWrapperInner = styled.div`
   display: flex;
   justify-content: space-between;
-`
-
-const PostTags = styled.section`
-  display: flex;
-  align-items: center;
-  margin-top: 1.944em;
-  a {
-    margin-bottom: 0;
-  }
-  h5 {
-    margin: 0;
-    padding-right: 0.375em;
-  }
 `
 
 const PostWrapper = Wrapper.withComponent('main')
@@ -86,18 +91,33 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
             <HeroImageSliceZone allHeroImageSlices={data.body} />
             <PostWrapperMainContent>
               <Headline>
-                <span>{data.date}</span> {categories && <span>/</span>} {categories && <Categories categories={categories} />} <span>/</span> <span>By {author}</span>
+                {data.date} {categories && <span>/</span>} {categories && <Categories categories={categories} />}  / By {author}
               </Headline>
-              <h3>{data.title.text}</h3>
+              <PostWrapperTitle>{data.title.text}</PostWrapperTitle>
               <SliceZone allSlices={data.body} />
             </PostWrapperMainContent>
-            <PostTags>
-              <h5>Tags:</h5>
-              {tags && <Tags tags={tags} />}
-            </PostTags>
           </PostWrapperMain>
-          <AsideLayout posts={posts.edges}/>
+          <PostWrapperAside>
+            <PostWrapperRecent>
+              <AsideTitle>
+                <AsideTitleText>Recent Posts</AsideTitleText>
+              </AsideTitle>
+              <AsideListing posts={posts.edges}/>
+            </PostWrapperRecent>
+            <PostWrapperCategories>
+              <AsideTitle>
+                <AsideTitleText>Categories</AsideTitleText>
+              </AsideTitle>
+              <AsideCategories />
+              <AsideTitle>
+                <AsideTitleText>Tags</AsideTitleText>
+              </AsideTitle>
+              <AsideTags />
+            </PostWrapperCategories>
+          </PostWrapperAside>
         </PostWrapperInner>
+        <span>Tags:</span>
+        {tags && <Tags tags={tags} />}
       </PostWrapper>
     </Layout>
   )
