@@ -13,7 +13,7 @@ border: 1px solid black;
 display: inline-block;
 text-transform: uppercase;
 font-weight: 700;
-color: ${props => props.theme.colors.black};
+color: ${theme.colors.black};
 font-style: normal;
 transition: all 0.25s ease-in-out;
   &:hover,

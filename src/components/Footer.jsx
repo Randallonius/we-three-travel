@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
+import { theme } from '../styles'
 
 const StyledFooter = styled.footer`
   margin: 6rem auto 0 auto;
-  color: ${props => props.theme.colors.grey};
+  color: ${theme.colors.grey};
 `
 
 const FooterContainer = styled.div`
@@ -29,7 +30,7 @@ const FooterTitle = styled.h4`
 `
 const FooterLinks = styled.div`
   p {
-    color: ${props => props.theme.colors.grey};
+    color: ${theme.colors.grey};
     font-weight: 700;
     margin-bottom: 10px;
   }

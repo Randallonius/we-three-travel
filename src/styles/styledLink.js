@@ -7,7 +7,7 @@ const StyledLink = styled(Link)`
   font-size: 14px;
   margin-bottom: .5rem;
   text-transform: uppercase;
-  color: ${props => props.theme.colors.black};
+  color: ${theme.colors.black};
   font-style: normal;
   transition: all 0.25s ease-in-out;
   &:hover,
