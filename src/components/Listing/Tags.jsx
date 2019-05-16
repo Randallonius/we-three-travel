@@ -4,7 +4,8 @@ import { Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
 import styled from '@emotion/styled'
 
-const Tag = styled(Link)`
+const StyledTagLink = styled(Link)`
+  font-size: 0.625em;
   padding: 0 15px;
   height: 32px;
   line-height: 32px;
@@ -12,6 +13,17 @@ const Tag = styled(Link)`
   margin: 0 7px 5px 0;
   border: 1px solid black;
   display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: ${props => props.theme.colors.black};
+  font-style: normal;
+  transition: all 0.25s ease-in-out;
+    &:hover,
+    &:focus {
+      background-color: ${props => props.theme.colors.greyDark};
+      color: ${props => props.theme.colors.greyLight};
+      text-decoration: none;
+    }
 `
 
 export default class Tags extends Component {
@@ -21,7 +33,7 @@ export default class Tags extends Component {
       <>
         {tags.map((tag) => (
           <React.Fragment key={tag}>
-            <Tag to={`/tags/${kebabCase(tag)}`}>{tag}</Tag>
+            <StyledTagLink to={`/tags/${kebabCase(tag)}`}>{tag}</StyledTagLink>
           </React.Fragment>
         ))}
       </>

@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import ListItem from './ListItem'
 import { Link } from 'gatsby'
-
-const List = styled.div`
-`
 
 const StyledLink = styled(Link)`
   display: block;
@@ -14,24 +10,27 @@ const StyledLink = styled(Link)`
   text-transform: uppercase;
   color: ${props => props.theme.colors.black};
   font-style: normal;
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
-    font-size: 1.777rem;
+  transition: all 0.25s ease-in-out;
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.grey};
+    text-decoration: none;
   }
 `
 
-export default class AsideListing extends Component {
+ export default class AsideListing extends Component {
   render() {
     const { posts } = this.props
     return (
-      <List>
+      <div>
         {posts.map(post => {
           return <StyledLink key={post.node.uid} to={post.node.uid}>{post.node.data.title.text}</StyledLink>
         })}
-      </List>
+      </div>
     )
   }
 }
 
-AsideListing.propTypes = {
+ AsideListing.propTypes = {
   posts: PropTypes.array.isRequired,
 }

@@ -2,19 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header, HeroImageSliceZone } from '../components'
+import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header, HeroImageSliceZone, AsideLayout } from '../components'
 import Categories from '../components/Listing/Categories'
 import Tags from '../components/Listing/Tags'
 import website from '../../config/website'
-import AsideListing from '../components/Listing/AsideListing';
-import AsideCategories from '../components/Listing/AsideCategories';
-import AsideTags from '../components/Listing/AsideTags'
 
 const Headline = styled.p`
-  font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: ${props => props.theme.colors.grey};
-  font-size: 1.25rem;
   padding-top: 1.45rem;
   a {
     font-style: normal;
@@ -59,6 +53,20 @@ const PostWrapperInner = styled.div`
   justify-content: space-between;
 `
 
+const PostTags = styled.section`
+  display: flex;
+  align-items: center;
+  margin-top: 1.944em;
+  a {
+    margin-bottom: 0;
+  }
+  h5 {
+    margin: 0;
+    padding-right: 0.375em;
+  }
+`
+
+
 const PostWrapper = Wrapper.withComponent('main')
 
 const Post = ({ data: { prismicPost, posts }, location }) => {
@@ -91,33 +99,18 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
             <HeroImageSliceZone allHeroImageSlices={data.body} />
             <PostWrapperMainContent>
               <Headline>
-                {data.date} {categories && <span>/</span>} {categories && <Categories categories={categories} />}  / By {author}
+              <span>{data.date}</span> {categories && <span>/</span>} {categories && <Categories categories={categories} />} <span>/</span> <span>By {author}</span>
               </Headline>
-              <PostWrapperTitle>{data.title.text}</PostWrapperTitle>
+              <h3>{data.title.text}</h3>
               <SliceZone allSlices={data.body} />
             </PostWrapperMainContent>
+            <PostTags>
+              <h5>Tags:</h5>
+              {tags && <Tags tags={tags} />}
+            </PostTags>
           </PostWrapperMain>
-          <PostWrapperAside>
-            <PostWrapperRecent>
-              <AsideTitle>
-                <AsideTitleText>Recent Posts</AsideTitleText>
-              </AsideTitle>
-              <AsideListing posts={posts.edges}/>
-            </PostWrapperRecent>
-            <PostWrapperCategories>
-              <AsideTitle>
-                <AsideTitleText>Categories</AsideTitleText>
-              </AsideTitle>
-              <AsideCategories />
-              <AsideTitle>
-                <AsideTitleText>Tags</AsideTitleText>
-              </AsideTitle>
-              <AsideTags />
-            </PostWrapperCategories>
-          </PostWrapperAside>
+          <AsideLayout posts={posts.edges}/>
         </PostWrapperInner>
-        <span>Tags:</span>
-        {tags && <Tags tags={tags} />}
       </PostWrapper>
     </Layout>
   )
