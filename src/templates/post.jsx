@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header, HeroImageSliceZone, AsideLayout } from '../components'
+import { Layout, Wrapper, SliceZone, SEO, Header, HeroImageSliceZone, AsideLayout } from '../components'
 import Categories from '../components/Listing/Categories'
 import Tags from '../components/Listing/Tags'
 import website from '../../config/website'
@@ -10,42 +10,31 @@ import website from '../../config/website'
 const Headline = styled.p`
   color: ${props => props.theme.colors.grey};
   padding-top: 1.45rem;
+
+  @media (min-width: ${props => props.theme.breakpoints.l}) {
+    font-size: 1.25rem;
+  }
+
   a {
     font-style: normal;
     font-weight: normal;
   }
+
+  span, a {
+    margin-right: 5px;
+  }
 `
 
 const PostWrapperMain = styled.div`
-  width: 70%;
+  width: 100%;
+  @media (min-width: ${props => props.theme.breakpoints.m}) {
+    width: 70%;
+  }
 `
 
 const PostWrapperMainContent = styled.div`
   padding: 0 2rem 2rem 2rem;
   background-color: ${props => props.theme.colors.white};
-`
-
-const PostWrapperTitle = styled.h3`
-`
-
-const PostWrapperAside = styled.div`
-  width: 25%;
-`
-
-const PostWrapperRecent = styled.div`
-
-`
-
-const PostWrapperCategories = styled.div`
-`
-
-const AsideTitle = styled.div`
-  background-color: ${props => props.theme.colors.black};
-`
-
-const AsideTitleText = styled.h4`
-  color: ${props => props.theme.colors.white};
-  padding: 1rem;
 `
 
 const PostWrapperInner = styled.div`
