@@ -38,7 +38,7 @@ const Category = ({
           <Title style={{ marginTop: '4rem' }}>
             {totalCount} {totalCount === 1 ? 'Post' : 'Posts'} {totalCount === 1 ? 'was' : 'were'} tagged with "{category}"
           </Title>
-          <Listing posts={edges} />
+          <Listing posts={edges} location={location}/>
         </CatWrapperContent>
         <AsideLayout posts={asidePosts.edges}/>
       </CatWrapperContainer>
@@ -128,7 +128,7 @@ export const pageQuery = graphql`
                   image {
                     localFile {
                       childImageSharp {
-                        fluid(maxWidth: 400, quality: 90) {
+                        fluid(maxWidth: 800, quality: 90) {
                           ...GatsbyImageSharpFluid_withWebp
                         }
                       }
