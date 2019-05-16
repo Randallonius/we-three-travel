@@ -1,10 +1,22 @@
-import PropTypes from 'prop-types'
 import { graphql, StaticQuery, Link } from 'gatsby'
 import styled from '@emotion/styled'
-import { Layout } from '../../components'
-import React, { Component } from 'react'
+import React from 'react'
 import kebabCase from 'lodash/kebabCase'
-import StyledLink from '../../styles/styledLink'
+
+const StyledLink = styled(Link)`
+  display: block;
+  font-size: 14px;
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+  color: ${props => props.theme.colors.black};
+  font-style: normal;
+  transition: all 0.25s ease-in-out;
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.grey};
+    text-decoration: none;
+  }
+`
 
 const AsideCategories = () => (
   <StaticQuery

@@ -2,9 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { Layout, Listing, Wrapper, Title, SEO, Header } from '../components'
+import { Layout, Listing, Wrapper, Title, SEO, Header, AsideLayout } from '../components'
 import website from '../../config/website'
-import AsideLayout from '../components/Aside/AsideLayout'
 
 
 const CatWrapper = Wrapper.withComponent('main')
@@ -41,7 +40,7 @@ const Category = ({
           </Title>
           <Listing posts={edges} />
         </CatWrapperContent>
-        {/* <AsideLayout posts={asidePosts.edges}/> */}
+        <AsideLayout posts={asidePosts.edges}/>
       </CatWrapperContainer>
     </CatWrapper>
   </Layout>

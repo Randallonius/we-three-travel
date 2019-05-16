@@ -109,7 +109,7 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
               {tags && <Tags tags={tags} />}
             </PostTags>
           </PostWrapperMain>
-          {/* <AsideLayout posts={posts.edges}/> */}
+          <AsideLayout posts={posts.edges}/>
         </PostWrapperInner>
       </PostWrapper>
     </Layout>
