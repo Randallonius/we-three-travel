@@ -85,6 +85,7 @@ const StyledScrollTop = styled(ScrollTop)`
   right: 2%;
   font-size: 12px;
   border: 1px solid black;
+  border-radius: unset;
 `;
 
 const PureLayout = ({ children, data, customSEO }) => (
