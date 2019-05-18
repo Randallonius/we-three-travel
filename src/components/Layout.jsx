@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import { Global, css } from '@emotion/core'
+import styled from '@emotion/styled'
 import { ThemeProvider } from 'emotion-theming'
 import '@reach/skip-nav/styles.css'
 
@@ -12,6 +13,7 @@ import Footer from './Footer'
 import SEO from './SEO'
 import SkipNavLink from './SkipNavLink'
 import { theme, reset } from '../styles'
+import ScrollTop from 'react-scrolltop-button';
 
 import 'typeface-lora'
 import 'typeface-source-sans-pro'
@@ -79,6 +81,12 @@ const globalStyle = css`
   }
 `
 
+const StyledScrollTop = styled(ScrollTop)`
+  right: 2%;
+  font-size: 12px;
+  border: 1px solid black;
+`;
+
 const PureLayout = ({ children, data, customSEO }) => (
   <ThemeProvider theme={theme}>
     <>
@@ -86,6 +94,7 @@ const PureLayout = ({ children, data, customSEO }) => (
       <SkipNavLink />
       {!customSEO && <SEO />}
       {children}
+      <StyledScrollTop distance={500}/>
       <Footer>
         <div dangerouslySetInnerHTML={{ __html: data.prismicHomepage.data.footer.html }} />
       </Footer>
