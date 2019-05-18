@@ -22,6 +22,10 @@ const StyledHeader = styled.nav`
 `
 
 const HeaderLeft = styled.div`
+  margin-bottom: 20px;
+  @media (min-width: ${props => props.theme.breakpoints.s}) {
+    margin-bottom: 0;
+  }
   a {
     font-size: 1.5rem;
     @media (min-width: ${props => props.theme.breakpoints.s}) {
@@ -31,8 +35,27 @@ const HeaderLeft = styled.div`
 `
 
 const HeaderRight = styled.div`
+  display: flex;
   a {
-    padding: 0 0.625rem
+    font-size: 1rem;
+    padding: 0 0.625rem;
+
+    @media (min-width: ${props => props.theme.breakpoints.s}) {
+      font-size: 	1.5rem;
+    }
+  }
+
+  a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: ${props => props.theme.colors.greyDark};
+    transition: width .25s;
+  }
+
+  a:hover::after {
+    width: 100%;
   }
 `
 
