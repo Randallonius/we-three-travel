@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { Layout, Listing, Wrapper, Title, SEO, Header, AsideLayout } from '../components'
 import website from '../../config/website'
+import Headroom from 'react-headroom'
 
 
 const CatWrapper = Wrapper.withComponent('main')
@@ -31,7 +32,9 @@ const Category = ({
 }) => (
   <Layout>
     <SEO title={`Category: ${category} | ${website.titleAlt}`} pathname={location.pathname} />
-    <Header />
+    <Headroom>
+      <Header />
+    </Headroom>
     <CatWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
       <CatWrapperContainer>
         <CatWrapperContent>

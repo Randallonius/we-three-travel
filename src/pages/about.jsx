@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { Layout, Wrapper, HeroImageSliceZone, Header, AuthorCard } from '../components'
+import Headroom from 'react-headroom'
 
 const IndexWrapper = Wrapper.withComponent('main')
 
@@ -61,7 +62,9 @@ class About extends Component {
     } = this.props
     return (
       <Layout>
-        <Header />
+        <Headroom>
+          <Header />
+        </Headroom>
         <AboutPageWrapper>
           <Hero>
             <HeroInnerImage>

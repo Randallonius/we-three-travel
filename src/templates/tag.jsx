@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { Layout, Listing, Wrapper, Title, SEO, Header, AsideLayout } from '../components'
 import website from '../../config/website'
+import Headroom from 'react-headroom'
 
 const TagWrapperContainer = styled.div`
   display: flex;
@@ -29,7 +30,9 @@ const Tag = ({
 }) => (
   <Layout>
     <SEO title={`Tag: ${tag} | ${website.titleAlt}`} pathname={location.pathname} />
-    <Header />
+    <Headroom>
+      <Header />
+    </Headroom>
     <TagWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
       <TagWrapperContainer>
         <TagWrapperContent>

@@ -6,6 +6,7 @@ import { Layout, Wrapper, SliceZone, SEO, Header, HeroImageSliceZone, AsideLayou
 import Categories from '../components/Listing/Categories'
 import Tags from '../components/Listing/Tags'
 import website from '../../config/website'
+import Headroom from 'react-headroom'
 
 const Headline = styled.p`
   color: ${props => props.theme.colors.grey};
@@ -81,7 +82,9 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
         node={prismicPost}
         article
       />
-      <Header />
+      <Headroom>
+        <Header />
+      </Headroom>
       <PostWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
         <PostWrapperInner>
           <PostWrapperMain>
