@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 
 const StyledHeader = styled.nav`
-  padding: 1.5rem 3rem;
   background-color: ${props => props.theme.colors.white};
+  display: flex;
+  padding: 1.5rem 3rem;
+  flex-direction: column;
+  align-items: center;
 
-  @media (min-width: ${props => props.theme.breakpoints.m}) {
-    display: flex;
-    align-items: center;
+  @media (min-width: ${props => props.theme.breakpoints.s}) {
+    flex-direction: row;
     justify-content: space-between;
   }
 
   a {
-    color: ${props => (props.invert ? props.theme.colors.greyLight : props.theme.colors.greyDark)};
+    color: ${props => props.theme.colors.greyDark};
     font-weight: 400;
     font-style: normal;
-    font-family: 'Poppins','Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   }
 `
 
 const HeaderLeft = styled.div`
   a {
-    @media (min-width: ${props => props.theme.breakpoints.m}) {
+    font-size: 1.5rem;
+    @media (min-width: ${props => props.theme.breakpoints.s}) {
       font-size: 	2.25rem;
     }
   }
@@ -38,9 +38,8 @@ const HeaderRight = styled.div`
 
 class Header extends Component {
   render() {
-    const { invert } = this.props
     return (
-      <StyledHeader invert={invert}>
+      <StyledHeader>
         <HeaderLeft>
           <Link to="/" aria-label="Back to Home">
             We Three Travel
@@ -60,11 +59,3 @@ class Header extends Component {
 }
 
 export default Header
-
-Header.propTypes = {
-  invert: PropTypes.bool,
-}
-
-Header.defaultProps = {
-  invert: false,
-}
