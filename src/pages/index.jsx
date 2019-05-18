@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { Layout, Listing, Wrapper, HeroImageSliceZone, Header } from '../components'
 import website from '../../config/website'
+import Headroom from 'react-headroom'
 
 const Hero = styled.header`
   display: flex;
@@ -35,7 +36,9 @@ class Index extends Component {
     } = this.props
     return (
       <Layout>
-        <Header />
+        <Headroom>
+          <Header />
+        </Headroom>
         <Hero>
           <HeroInnerImage>
             <HeroImageSliceZone allHeroImageSlices={homepage.data.body} />
