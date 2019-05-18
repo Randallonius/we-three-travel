@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { Layout, Wrapper, HeroImageSliceZone, Header, AuthorCard } from '../components'
+import Headroom from 'react-headroom'
 
 const IndexWrapper = Wrapper.withComponent('main')
 
@@ -18,9 +19,7 @@ const Hero = styled.header`
 `
 
 const HeroInnerImage = styled.div`
-  @media (min-width: ${props => props.theme.breakpoints.m}) {
-    width: 100%;
-  }
+  width: 100%;
   @media (min-width: ${props => props.theme.breakpoints.l}) {
     .gatsby-image-wrapper {
       max-height: 500px;
@@ -35,10 +34,19 @@ const AboutPageContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  flex-direction: column;
+
+  @media (min-width: ${props => props.theme.breakpoints.s}) {
+    flex-direction: row;
+  }
 `
 
 const ContentContainer = styled.div`
-  width: 49%;
+  
+
+  @media (min-width: ${props => props.theme.breakpoints.s}) {
+    width: 49%;
+  }
 `
 
 const AboutPageTitle = styled.h2`
@@ -54,7 +62,9 @@ class About extends Component {
     } = this.props
     return (
       <Layout>
-        <Header />
+        <Headroom>
+          <Header />
+        </Headroom>
         <AboutPageWrapper>
           <Hero>
             <HeroInnerImage>
