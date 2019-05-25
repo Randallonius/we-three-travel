@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import { Layout, Listing, Wrapper, HeroImageSliceZone, Header } from '../components'
+import { Layout, Listing, Wrapper, HeroImageSliceZone, Header, InstagramListing } from '../components'
 import website from '../../config/website'
 import Headroom from 'react-headroom'
 
@@ -31,7 +31,7 @@ const IndexWrapper = Wrapper.withComponent('main')
 class Index extends Component {
   render() {
     const {
-      data: { homepage, posts },
+      data: { homepage, posts, instagrams },
       location
     } = this.props
     return (
@@ -46,6 +46,7 @@ class Index extends Component {
         </Hero>
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
             <Listing posts={posts.edges} location={location} />
+            <InstagramListing instagrams={instagrams.edges}></InstagramListing>
         </IndexWrapper>
       </Layout>
     )
@@ -57,6 +58,7 @@ export default Index
 Index.propTypes = {
   data: PropTypes.shape({
     posts: PropTypes.object.isRequired,
+    instagrams: PropTypes.object.isRequired,
   }).isRequired,
   location: PropTypes.object.isRequired,
 }
@@ -156,6 +158,37 @@ export const pageQuery = graphql`
                 }
               }
             }
+          }
+        }
+      }
+    }
+    instagrams: allInstaNode(limit: 8, sort: { fields: [timestamp], order: DESC }) {
+      edges {
+        node {
+          id
+          likes
+          comments
+          mediaType
+          preview
+          original
+          timestamp
+          caption
+          localFile {
+            childImageSharp {
+              fixed(width: 150, height: 150) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+          # Only available with the public api scraper
+          thumbnails {
+            src
+            config_width
+            config_height
+          }
+          dimensions {
+            height
+            width
           }
         }
       }

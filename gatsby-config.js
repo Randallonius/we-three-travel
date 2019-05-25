@@ -69,6 +69,12 @@ module.exports = {
         icon: website.favicon,
       },
     },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `we_three_travel`,
+      },
+    },
     // Must be placed at the end
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
