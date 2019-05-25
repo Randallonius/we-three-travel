@@ -4,6 +4,8 @@ import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { Layout, Wrapper, HeroImageSliceZone, Header, AuthorCard } from '../components'
 import Headroom from 'react-headroom'
+import { FiFacebook, FiInstagram, FiMail } from 'react-icons/fi';
+import website from '../../config/website'
 
 const IndexWrapper = Wrapper.withComponent('main')
 
@@ -55,6 +57,24 @@ const AboutPageTitle = styled.h2`
 
 const AboutPageContent = styled.div``
 
+const SocialLinkContainer = styled.div`
+`
+
+const SocialLink = styled.a`
+  font-size: 18px;
+  padding: 2px 7px 4px;
+  transition: all 0.25s ease-in-out;
+  color: ${props => props.theme.colors.greyHover};
+  border: 1px solid ${props => props.theme.colors.greyHover};
+  margin: 2px;
+
+  &:hover {
+    background-color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.greyLight};
+    border-color: transparent;
+  }
+`
+
 class About extends Component {
   render() {
     const {
@@ -80,6 +100,11 @@ class About extends Component {
             <ContentContainer>
               <AboutPageTitle>{aboutpage.data.contact_title.text}</AboutPageTitle>
               <AboutPageContent dangerouslySetInnerHTML={{ __html: aboutpage.data.contact_content.html }} />
+              <SocialLinkContainer>
+                <SocialLink href={`http://www.facebook.com/${website.facebook}`}><FiFacebook /></SocialLink>
+                <SocialLink href={`http://www.instagram.com/${website.instagram}`}><FiInstagram /></SocialLink>
+                <SocialLink href={`mailto:${website.email}`}><FiMail /></SocialLink>
+              </SocialLinkContainer>
             </ContentContainer>
           </AboutPageContainer>
         </AboutPageWrapper>
