@@ -12,13 +12,14 @@ module.exports = {
   // JSONLD / Manifest
   favicon: 'src/favicon.png', // Used for manifest favicon generation
   shortName: 'W3T', // shortname for manifest. MUST be shorter than 12 characters
-  author: 'Randallonius', // Author for schemaORGJSONLD
+  author: 'Jonathan Randall', // Author for schemaORGJSONLD
   themeColor: '#3D63AE',
   backgroundColor: '#EBEDF2',
 
+  email: 'wethreetravelers@gmail.com', // Email handle
   twitter: '', // Twitter Username
-  facebook: '', // Facebook Site Name
-  instagram: '', // Instagram handle
+  facebook: 'wethreetravelers', // Facebook Site Name
+  instagram: 'we_three_travel', // Instagram handle
   googleAnalyticsID: '',
 
   skipNavId: 'reach-skip-nav', // ID for the "Skip to content" a11y feature
