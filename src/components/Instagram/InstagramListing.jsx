@@ -7,7 +7,8 @@ import InstagramItem from './InstagramItem'
 const List = styled.div`
   display: flex;
   flex-wrap: wrap;
-  @media (max-width: ${props => props.theme.breakpoints.xs}) {
+  justify-content: space-between;
+  @media screen and (max-width: ${props => props.theme.breakpoints.xs}) {
     margin: 0 15px;
   }
 `

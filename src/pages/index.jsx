@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import { Layout, Listing, Wrapper, HeroImageSliceZone, Header, InstagramListing } from '../components'
+import { Layout, Listing, Wrapper, HeroImageSliceZone, Header, InstagramListing, Title } from '../components'
 import website from '../../config/website'
 import Headroom from 'react-headroom'
 
@@ -45,8 +45,10 @@ class Index extends Component {
           </HeroInnerImage>
         </Hero>
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-            <Listing posts={posts.edges} location={location} />
-            <InstagramListing instagrams={instagrams.edges}></InstagramListing>
+          <Title>Recent Posts</Title>
+          <Listing posts={posts.edges} location={location} />
+          <Title>Instagram</Title>
+          <InstagramListing instagrams={instagrams.edges}></InstagramListing>
         </IndexWrapper>
       </Layout>
     )
@@ -175,8 +177,8 @@ export const pageQuery = graphql`
           caption
           localFile {
             childImageSharp {
-              fixed(width: 150, height: 150) {
-                ...GatsbyImageSharpFixed
+              fluid(maxWidth: 300, quality: 90) {
+                ...GatsbyImageSharpFluid
               }
             }
           }

@@ -33,7 +33,7 @@ const Tag = ({
     <Headroom>
       <Header />
     </Headroom>
-    <TagWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
+    <TagWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
       <TagWrapperContainer>
         <TagWrapperContent>
           <Title>

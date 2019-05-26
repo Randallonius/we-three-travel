@@ -38,7 +38,7 @@ const Category = ({
     <CatWrapper id={website.skipNavId} style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
       <CatWrapperContainer>
         <CatWrapperContent>
-          <Title style={{ marginTop: '4rem' }}>
+          <Title>
             {totalCount} {totalCount === 1 ? 'Post' : 'Posts'} {totalCount === 1 ? 'was' : 'were'} tagged with "{category}"
           </Title>
           <Listing posts={edges} location={location}/>
