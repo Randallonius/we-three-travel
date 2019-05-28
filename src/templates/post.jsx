@@ -7,6 +7,7 @@ import Categories from '../components/Listing/Categories'
 import Tags from '../components/Listing/Tags'
 import website from '../../config/website'
 import Headroom from 'react-headroom'
+import Disqus from 'gatsby-plugin-disqus'
 
 const Headline = styled.p`
   color: ${props => props.theme.colors.grey};
@@ -46,7 +47,8 @@ const PostWrapperInner = styled.div`
 const PostTags = styled.section`
   display: flex;
   align-items: center;
-  margin-top: 1.944em;
+  margin-top: 1.944rem;
+  margin-bottom: 1.944rem;
   a {
     margin-bottom: 0;
   }
@@ -100,6 +102,11 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
               <h5>Tags:</h5>
               {tags && <Tags tags={tags} />}
             </PostTags>
+            <Disqus 
+              identifier={prismicPost.uid}
+              title={data.title.text}
+              url={`${website.url}${location.pathname}`}
+            />
           </PostWrapperMain>
           <AsideLayout posts={posts.edges}/>
         </PostWrapperInner>
