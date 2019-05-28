@@ -44,7 +44,7 @@ class Index extends Component {
             <HeroImageSliceZone allHeroImageSlices={homepage.data.body} />
           </HeroInnerImage>
         </Hero>
-        <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+        <IndexWrapper id={website.skipNavId} style={{ paddingTop: '3rem', paddingBottom: '2rem' }}>
           <Title>Recent Posts</Title>
           <Listing posts={posts.edges} location={location} />
           <Title>Instagram</Title>
