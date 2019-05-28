@@ -6,11 +6,11 @@ module.exports = {
   headline: 'Writing and publishing content for We Three Travel', // Headline for schema.org JSONLD
   url: 'https://xenodochial-morse-0c6553.netlify.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
-  logo: '/logos/logo-1024.png', // Used for SEO
+  logo: '/logos/logo.png', // Used for SEO
   ogLanguage: 'en_US', // Facebook Language
 
   // JSONLD / Manifest
-  favicon: 'src/favicon.png', // Used for manifest favicon generation
+  favicon: 'src/icon.png', // Used for manifest favicon generation
   shortName: 'W3T', // shortname for manifest. MUST be shorter than 12 characters
   author: 'Jonathan Randall', // Author for schemaORGJSONLD
   themeColor: '#3D63AE',

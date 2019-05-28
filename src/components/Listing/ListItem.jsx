@@ -9,6 +9,9 @@ import ExcerptSliceZone from '../ExcerptSliceZone';
 const Item = styled.div`
   padding-bottom: 15px;
   width: 100%;
+  @media screen and (min-width: ${props => props.theme.breakpoints.s}) {
+    padding-bottom: 0;
+  }
   
   &.masonry {
     @media screen and (max-width: ${props => props.theme.breakpoints.xs}) {
@@ -19,11 +22,10 @@ const Item = styled.div`
       box-sizing: border-box;
       width: calc(100% / 2);
       float: left;
-      padding-left: 15px;
+      padding: 15px;
     }
     @media screen and (min-width: ${props => props.theme.breakpoints.m}) {
-      padding-left: 40px;
-      padding-bottom: 40px;
+      padding: 0 20px 40px;
     }
     @media screen and (min-width: ${props => props.theme.breakpoints.l}) {
       width: calc(100% / 3);
