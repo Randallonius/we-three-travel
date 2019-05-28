@@ -105,6 +105,13 @@ const reset = css`
   [hidden] {
     display: none !important;
   }
+
+  #disqus_thread {
+    border: 1px solid black;
+    margin: 0;
+    width: 100%;
+    padding: 20px;
+  }
 `
 
 export default reset

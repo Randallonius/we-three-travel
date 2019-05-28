@@ -75,6 +75,12 @@ module.exports = {
         username: `we_three_travel`,
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `wethreetravel`
+      }
+    },
     // Must be placed at the end
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
