@@ -1,6 +1,6 @@
 import Typography from 'typography'
 
-// This website uses the system font stack after the placed "Lora" font
+// This website uses the system font stack after the placed "Poppins" font
 // The scaleRatio will be overwritten for smaller breakpoints in src/components/Layout
 
 const typography = new Typography({
@@ -12,9 +12,7 @@ const typography = new Typography({
       name: 'Poppins',
       styles: [
         '400',
-        '400i',
         '700',
-        '700i',
       ],
     },
   ],

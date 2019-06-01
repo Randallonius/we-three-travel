@@ -9,6 +9,7 @@ import Headroom from 'react-headroom'
 const Hero = styled.header`
   display: flex;
   align-items: center;
+  position: relative;
 `
 
 const HeroInnerImage = styled.div`
@@ -17,13 +18,28 @@ const HeroInnerImage = styled.div`
   }
   @media (min-width: ${props => props.theme.breakpoints.l}) {
     .gatsby-image-wrapper {
-      max-height: 500px;
+      max-height: 600px;
     }
   }
   div {
     padding: 0;
   }
 
+`
+
+const HeroInnerTextContainer = styled.div`
+  position: absolute;
+  top: 35%;
+  border: 1px solid black;
+  background: rgba(255,255,255,0.4);
+
+  h1 {
+    margin-bottom: 0;
+  }
+`
+
+const HeroInnerText = styled.div`
+  padding: 50px 50px 50px 100px;
 `
 
 const IndexWrapper = Wrapper.withComponent('main')
@@ -43,6 +59,13 @@ class Index extends Component {
           <HeroInnerImage>
             <HeroImageSliceZone allHeroImageSlices={homepage.data.body} />
           </HeroInnerImage>
+          <HeroInnerTextContainer>
+            <HeroInnerText>
+              <h1>Welcome to</h1>
+              <h1>{homepage.data.title.text}</h1>
+              <span dangerouslySetInnerHTML={{ __html: homepage.data.content.html }}></span>
+            </HeroInnerText>
+          </HeroInnerTextContainer>
         </Hero>
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '3rem', paddingBottom: '2rem' }}>
           <Title>Recent Posts</Title>
