@@ -10,7 +10,7 @@ const Item = styled.div`
   padding-bottom: 15px;
   width: 100%;
   @media screen and (min-width: ${props => props.theme.breakpoints.s}) {
-    padding-bottom: 0;
+    padding-bottom: 20px;
   }
   
   &.masonry {
