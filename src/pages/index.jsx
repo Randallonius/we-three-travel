@@ -13,8 +13,9 @@ const Hero = styled.header`
 `
 
 const HeroInnerImage = styled.div`
+width: 100%;
   @media (min-width: ${props => props.theme.breakpoints.m}) {
-    width: 100%;
+    
   }
   @media (min-width: ${props => props.theme.breakpoints.l}) {
     .gatsby-image-wrapper {
@@ -28,10 +29,15 @@ const HeroInnerImage = styled.div`
 `
 
 const HeroInnerTextContainer = styled.div`
-  position: absolute;
-  top: 35%;
-  border: 1px solid black;
-  background: rgba(255,255,255,0.4);
+  display: none;
+
+  @media (min-width: ${props => props.theme.breakpoints.s}) {
+    display: block;
+    position: absolute;
+    top: 35%;
+    border: 1px solid black;
+    background: rgba(255,255,255,0.4);
+  }
 
   h1 {
     margin-bottom: 0;
