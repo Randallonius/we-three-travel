@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-sitemap: https://prismic.wethreetravel.com/sitemap.xml
+sitemap: https://we-three-travel.prismic.io/sitemap.xml

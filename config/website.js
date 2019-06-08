@@ -4,7 +4,7 @@ module.exports = {
   titleAlt: 'We Three Travel', // Title for JSONLD
   description: 'A travel blog that focuses on budget sustainable international travel with a family',
   headline: 'Writing and publishing content for We Three Travel', // Headline for schema.org JSONLD
-  url: 'https://xenodochial-morse-0c6553.netlify.com', // Domain of your site. No trailing slash!
+  url: 'https://www.wethreetravel.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   logo: '/logos/logo.png', // Used for SEO
   ogLanguage: 'en_US', // Facebook Language
@@ -20,7 +20,7 @@ module.exports = {
   twitter: '', // Twitter Username
   facebook: 'wethreetravelers', // Facebook Site Name
   instagram: 'we_three_travel', // Instagram handle
-  googleAnalyticsID: '',
+  googleAnalyticsID: 'UA-141685341-1',
 
   skipNavId: 'reach-skip-nav', // ID for the "Skip to content" a11y feature
 }
