@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
+import SlideContainerButton from './SlideContainerButton'
+import SlideContainer from './SlideContainer'
 
 const StyledHeader = styled.nav`
   background-color: ${props => props.theme.colors.white};
@@ -60,6 +62,25 @@ const HeaderRight = styled.div`
 `
 
 class Header extends Component {
+  constructor(props, context) {
+    super(props, context)
+    this.state = {
+      visible: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this)
+  }
+  handleClick(e) {
+    this.toggleMenu();
+ 
+    console.log("clicked");
+    e.stopPropagation();
+  }
+  toggleMenu() {
+    this.setState({
+      visible: !this.state.visible
+    })
+  }
   render() {
     return (
       <StyledHeader>
@@ -75,6 +96,9 @@ class Header extends Component {
           <Link to="/about" aria-label="Back to Home">
             About
           </Link>
+          <SlideContainerButton handleClick={this.handleClick}/>
+          <SlideContainer handleClick={this.handleClick}
+          menuVisibility={this.state.visible}/>
         </HeaderRight>
       </StyledHeader>
     )
