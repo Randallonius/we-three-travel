@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { FiX } from 'react-icons/fi';
+import SlideMapContainer from './SlideMapContainer'
 
 const MenuSlide = styled.div`
   width: 40vw;
   height: 100vh;
-  background-color: #FFE600;
+  background-color: #f5f5f5;
   position: fixed;
   top: 0;
   right: 0;
@@ -28,13 +29,11 @@ class SlideContainer extends Component {
     let visibility = 'hide'
     if (this.props.menuVisibility) {
       visibility = 'show'
-      console.log('>>>SHOW')
     }
     return (
-      <MenuSlide onMouseUp={this.props.handleClick} 
-      className={visibility}>
+      <MenuSlide className={visibility}>
         <div>
-          <div><FiX /></div>
+          <button onClick={this.props.handleClick}><FiX /></button>
           <ul>
             <li>Lorem</li>
             <li>Ipsum</li>
@@ -44,6 +43,7 @@ class SlideContainer extends Component {
             <li>Aenean</li>
             <li>Consectetur</li>
           </ul>
+          <SlideMapContainer />
         </div>
       </MenuSlide>
     );
