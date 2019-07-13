@@ -10,5 +10,6 @@ import HeroImageSliceZone from './HeroImageSliceZone'
 import AuthorCard from './authorCard'
 import AsideLayout from './Aside'
 import InstagramListing from './Instagram'
+import SlideContainer from './Slide'
 
-export { Footer, Layout, Listing, SEO, Wrapper, SliceZone, Title, Header, HeroImageSliceZone, AuthorCard, AsideLayout, InstagramListing }
+export { Footer, Layout, Listing, SEO, Wrapper, SliceZone, Title, Header, HeroImageSliceZone, AuthorCard, AsideLayout, InstagramListing, SlideContainer }

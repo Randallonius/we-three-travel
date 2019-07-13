@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
-import SlideContainerButton from './SlideContainerButton'
-import SlideContainer from './SlideContainer'
+import SlideContainerButton from './Slide/SlideContainerButton'
+import SlideContainer from './Slide/SlideContainer'
 
 const StyledHeader = styled.nav`
   background-color: ${props => props.theme.colors.white};

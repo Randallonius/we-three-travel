@@ -12,6 +12,7 @@ const reset = css`
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    height: 100%;
   }
   [tabindex='-1']:focus {
     outline: none !important;
@@ -111,6 +112,11 @@ const reset = css`
     margin: 0;
     width: 100%;
     padding: 20px;
+  }
+
+  .body--slide-open {
+    overflow: hidden;
+    height:100%;
   }
 `
 

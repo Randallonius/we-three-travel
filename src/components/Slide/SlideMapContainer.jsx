@@ -102,7 +102,7 @@ class SlideMapContainer extends Component {
 
   render() {
     return (
-          <div id="chartdiv" style={{ width: "90%", height: "300px", margin: "0 auto", border: "1px solid black" }}></div>
+          <div id="chartdiv" style={{ width: "90%", height: "300px", margin: "20px auto", border: "1px solid black" }}></div>
         );
   }
 }
