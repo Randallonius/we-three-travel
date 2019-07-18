@@ -85,13 +85,19 @@ const SLIDE_OPEN_CLASS = "body--slide-open";
 
 class SlideContainer extends Component {
 
-  render() {
-    let visibility = 'hide'
+  componentDidUpdate() {
     if (this.props.menuVisibility) {
-      visibility = 'show'
       document.body.classList.add(SLIDE_OPEN_CLASS);
     } else {
       document.body.classList.remove(SLIDE_OPEN_CLASS);
+    }
+  }
+
+  render() {
+    let visibility = 'hide'
+
+    if (this.props.menuVisibility) {
+      visibility = 'show'
     }
     return (
       <MenuSlide className={visibility}>
