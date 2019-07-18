@@ -1,6 +1,20 @@
 const path = require('path')
 const _ = require('lodash')
 
+exports.onCreateWebpackConfig = ({
+  actions,
+}) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.node$/,
+          use: 'node-loader'
+        }
+      ],
+    },
+  })
+};
 // graphql function returns a promise so we can use this little promise helper to have a nice result/error state
 const wrapper = promise =>
   promise
