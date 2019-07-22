@@ -70,6 +70,58 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allPrismicPost } }) => {
+              return allPrismicPost.edges.map(edge => {
+                return Object.assign({}, edge.node, {
+                  date: edge.node.data.date,
+                  title: edge.node.data.title.text,
+                  url: site.siteMetadata.siteUrl + '/' + edge.node.uid,
+                  guid: site.siteMetadata.siteUrl + '/' + edge.node.uid,
+                })
+              })
+            },
+            query: `
+              {
+                allPrismicPost(
+                  sort: { fields: [data___date], order: DESC },
+                ) {
+                  edges {
+                    node {
+                      uid
+                      data {
+                        title {
+                          text
+                        }
+                        date(formatString: "MMMM DD YYYY")
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Your Site's RSS Feed",
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-source-instagram`,
       options: {
         username: `we_three_travel`,
