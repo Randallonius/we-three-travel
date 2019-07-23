@@ -88,9 +88,14 @@ module.exports = {
           {
             serialize: ({ query: { site, allPrismicPost } }) => {
               return allPrismicPost.edges.map(edge => {
+                let postAuthor = false
+                if (edge.node.data.author_group[0].author) {
+                  postAuthor = edge.node.data.author_group.map(a => a.author.document[0].data.name)
+                }
                 return Object.assign({}, edge.node, {
                   date: edge.node.data.date,
                   title: edge.node.data.title.text,
+                  author: postAuthor,
                   url: site.siteMetadata.siteUrl + '/' + edge.node.uid,
                   guid: site.siteMetadata.siteUrl + '/' + edge.node.uid,
                 })
@@ -109,6 +114,26 @@ module.exports = {
                           text
                         }
                         date(formatString: "MMMM DD YYYY")
+                        author_group {
+                          author {
+                            document {
+                              data {
+                                name
+                              }
+                            }
+                          }
+                        }
+                        body {
+                          ... on PrismicPostBodyText {
+                            slice_type
+                            id
+                            primary {
+                              text {
+                                html
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -116,7 +141,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Your Site's RSS Feed",
+            title: "We Three Travel's RSS Feed",
           },
         ],
       },
