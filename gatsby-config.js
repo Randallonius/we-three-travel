@@ -92,12 +92,18 @@ module.exports = {
                 if (edge.node.data.author_group[0].author) {
                   postAuthor = edge.node.data.author_group.map(a => a.author.document[0].data.name)
                 }
+                const excerptSlices = edge.node.data.body
+                const slice = excerptSlices.find(s => 
+                  s.slice_type && s.slice_type === 'text'
+                  )
+                console.log('>>>WORK?', slice.primary.text.html)
                 return Object.assign({}, edge.node, {
                   date: edge.node.data.date,
                   title: edge.node.data.title.text,
                   author: postAuthor,
                   url: site.siteMetadata.siteUrl + '/' + edge.node.uid,
                   guid: site.siteMetadata.siteUrl + '/' + edge.node.uid,
+                  custom_elements: [{ "content:encoded": slice.primary.text.html }],
                 })
               })
             },
