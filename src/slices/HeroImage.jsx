@@ -11,7 +11,7 @@ const HeroImage = styled.div`
 
 const Image = ({ input }) => (
   <HeroImage>
-    <Img fluid={input.primary.image.localFile.childImageSharp.fluid} />
+    <Img fluid={input.primary.image.localFile.childImageSharp.fluid} alt={input.primary.image.alt} />
   </HeroImage>
 )
 
