@@ -182,6 +182,7 @@ export const pageQuery = graphql`
             id
             primary {
               image {
+                alt
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1200, quality: 90) {
@@ -197,6 +198,7 @@ export const pageQuery = graphql`
             id
             primary {
               image {
+                alt
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1200, quality: 90) {

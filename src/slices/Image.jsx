@@ -7,10 +7,17 @@ const Content = styled.div`
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 `
-
+const ImageDescription = styled.div`
+  padding-top: .9rem;
+  border-bottom: 1px solid ${props => props.theme.colors.greyLight};
+  font-size: 0.875em;
+`
 const Image = ({ input }) => (
   <Content>
-    <Img fluid={input.primary.image.localFile.childImageSharp.fluid} />
+    <Img fluid={input.primary.image.localFile.childImageSharp.fluid} alt={input.primary.image.alt}/>
+    <ImageDescription>
+      <span>{input.primary.image.alt}</span>
+    </ImageDescription>
   </Content>
 )
 
