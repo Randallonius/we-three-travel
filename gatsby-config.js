@@ -146,7 +146,7 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml",
+            output: '/rss.xml',
             title: "We Three Travel's RSS Feed",
           },
         ],
@@ -161,8 +161,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `wethreetravel`
-      }
+        shortname: `wethreetravel`,
+      },
     },
     // Must be placed at the end
     'gatsby-plugin-offline',
