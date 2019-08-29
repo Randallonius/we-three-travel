@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Img from "gatsby-image"
+import Img from 'gatsby-image'
 import website from '../../../config/website'
 import styled from '@emotion/styled'
-import { FiHeart } from 'react-icons/fi';
+import { FiHeart } from 'react-icons/fi'
 
 const ItemContainer = styled.div`
   width: calc(1/2*100% - (1 - 1/2)*10px);

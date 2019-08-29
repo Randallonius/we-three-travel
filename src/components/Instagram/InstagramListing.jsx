@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
@@ -19,7 +18,7 @@ export default class InstagramListing extends Component {
     return (
       <List>
         {instagrams.map(instagram => {
-          return <InstagramItem key={instagram.node.id} node={instagram.node}/>
+          return <InstagramItem key={instagram.node.id} node={instagram.node} />
         })}
       </List>
     )

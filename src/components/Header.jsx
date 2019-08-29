@@ -70,17 +70,18 @@ class Header extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this)
   }
+
   handleClick(e) {
-    this.toggleMenu();
- 
-    console.log("clicked");
-    e.stopPropagation();
+    this.toggleMenu()
+    e.stopPropagation()
   }
+
   toggleMenu() {
     this.setState({
-      visible: !this.state.visible
+      visible: !this.state.visible,
     })
   }
+
   render() {
     return (
       <StyledHeader>
@@ -96,9 +97,9 @@ class Header extends Component {
           <Link to="/about" aria-label="Back to Home">
             About
           </Link>
-          <SlideContainerButton handleClick={this.handleClick}/>
+          <SlideContainerButton handleClick={this.handleClick} />
           <SlideContainer handleClick={this.handleClick}
-          menuVisibility={this.state.visible}/>
+            menuVisibility={this.state.visible} />
         </HeaderRight>
       </StyledHeader>
     )

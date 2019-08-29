@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import {Excerpt} from '../slices'
+import { Excerpt } from '../slices'
 
 const ExcerptContent = styled.div`
   

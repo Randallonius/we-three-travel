@@ -1,3 +1,1 @@
-# Gatsby Starter: Prismic
-
-A typography-heavy & light-themed Travel Blog using [Prismic](https://prismic.io/).
+We Three Travel - A families travel blog

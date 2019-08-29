@@ -12,12 +12,12 @@ const Item = styled.div`
   @media screen and (min-width: ${props => props.theme.breakpoints.s}) {
     padding-bottom: 20px;
   }
-  
+
   &.masonry {
     @media screen and (max-width: ${props => props.theme.breakpoints.xs}) {
       width: 100%;
     }
-  
+
     @media screen and (min-width: ${props => props.theme.breakpoints.s}) {
       box-sizing: border-box;
       width: calc(100% / 2);
@@ -32,7 +32,7 @@ const Item = styled.div`
       padding-left: 25px;
       padding-right: 25px;
       padding-bottom: 50px;
-    } 
+    }
   }
 `
 
@@ -80,11 +80,11 @@ const ListingText = styled.div`
 `
 
 const ListingTextInner = styled.div`
-text-align: center;
-padding: 38px 40px 20px 40px;
-@media (min-width: ${props => props.theme.breakpoints.s}) {
+  text-align: center;
   padding: 38px 40px 20px 40px;
-}
+  @media (min-width: ${props => props.theme.breakpoints.s}) {
+    padding: 38px 40px 20px 40px;
+  }
 `
 
 const ListingTitle = styled.h4`
@@ -145,7 +145,7 @@ const StyledLink = styled(Link)`
 export default class ListItem extends Component {
   render() {
     const { node, categories, author, location } = this.props
-    const listSize = location.pathname === ('/') ? 'masonry' : 'full';
+    const listSize = location.pathname === '/' ? 'masonry' : 'full'
     return (
       <Item className={listSize}>
         <ListingImageContainer>

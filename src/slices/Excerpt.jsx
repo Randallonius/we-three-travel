@@ -11,11 +11,9 @@ const Excerpt = ({ input }) => {
   const EXCERPT_LENGTH = 140;
   const excerptText = truncate(input.primary.text.text, {
     length: EXCERPT_LENGTH, // maximum 140 characters
-    separator: /,?\.* +/ // separate by spaces, including preceding commas and periods
-  });
-  return (
-    <Content dangerouslySetInnerHTML={{ __html: excerptText }} />
-  )
+    separator: /,?\.* +/, // separate by spaces, including preceding commas and periods
+  })
+  return <Content dangerouslySetInnerHTML={{ __html: excerptText }} />
 }
 
 export default Excerpt
