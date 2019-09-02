@@ -104,7 +104,7 @@ class SlideContainer extends Component {
         <div>
           <CloseButton onClick={this.props.handleClick}><FiX /></CloseButton>
           <Title>Where Have We Been??</Title>
-          <LeafletMap />
+          {typeof window !== 'undefined' && <LeafletMap />}
           <Title>Where Are We Right Now??</Title>
           <SubTitle>Grand Rapids, MI</SubTitle>
           <Title>Where Are We Off To Next??</Title>
