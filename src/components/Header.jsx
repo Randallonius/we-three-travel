@@ -38,25 +38,26 @@ const HeaderLeft = styled.div`
 
 const HeaderRight = styled.div`
   display: flex;
-  a {
-    font-size: 1rem;
-    padding: 0 0.625rem;
+`
 
-    @media (min-width: ${props => props.theme.breakpoints.s}) {
-      font-size: 	1.5rem;
-    }
+const HeaderRightLink = styled(Link)`
+  font-size: 1rem;
+  padding: 0 0.625rem;
+
+  @media (min-width: ${props => props.theme.breakpoints.s}) {
+    font-size: 1.5rem;
   }
 
-  a::after {
+  :after {
     content: '';
     display: block;
     width: 0;
     height: 2px;
     background: ${props => props.theme.colors.greyDark};
-    transition: width .25s;
+    transition: width 0.25s;
   }
 
-  a:hover::after {
+  :hover::after {
     width: 100%;
   }
 `
@@ -65,22 +66,23 @@ class Header extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      visible: false
+      visible: false,
     }
     this.handleClick = this.handleClick.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this)
   }
+
   handleClick(e) {
-    this.toggleMenu();
- 
-    console.log("clicked");
-    e.stopPropagation();
+    this.toggleMenu()
+    e.stopPropagation()
   }
+
   toggleMenu() {
     this.setState({
-      visible: !this.state.visible
+      visible: !this.state.visible,
     })
   }
+
   render() {
     return (
       <StyledHeader>
@@ -90,15 +92,15 @@ class Header extends Component {
           </Link>
         </HeaderLeft>
         <HeaderRight>
-          <Link to="/" aria-label="Back to Home">
+          <HeaderRightLink to="/" aria-label="Back to Home">
             Blog
-          </Link>
-          <Link to="/about" aria-label="Back to Home">
+          </HeaderRightLink>
+          <HeaderRightLink to="/about" aria-label="Back to Home">
             About
-          </Link>
-          <SlideContainerButton handleClick={this.handleClick}/>
+          </HeaderRightLink>
+          <SlideContainerButton handleClick={this.handleClick} />
           <SlideContainer handleClick={this.handleClick}
-          menuVisibility={this.state.visible}/>
+            menuVisibility={this.state.visible} />
         </HeaderRight>
       </StyledHeader>
     )

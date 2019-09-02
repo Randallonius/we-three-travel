@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
+import Headroom from 'react-headroom'
+import Disqus from 'gatsby-plugin-disqus'
 import { Layout, Wrapper, SliceZone, SEO, Header, HeroImageSliceZone, AsideLayout } from '../components'
 import Categories from '../components/Listing/Categories'
 import Tags from '../components/Listing/Tags'
 import website from '../../config/website'
-import Headroom from 'react-headroom'
-import Disqus from 'gatsby-plugin-disqus'
 
 const Headline = styled.p`
   color: ${props => props.theme.colors.grey};
@@ -108,7 +108,7 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
               url={`${website.url}${location.pathname}`}
             />
           </PostWrapperMain>
-          <AsideLayout posts={posts.edges}/>
+          <AsideLayout posts={posts.edges} />
         </PostWrapperInner>
       </PostWrapper>
     </Layout>
@@ -120,6 +120,7 @@ export default Post
 Post.propTypes = {
   data: PropTypes.shape({
     prismicPost: PropTypes.object.isRequired,
+    posts: PropTypes.object.isRequired,
   }).isRequired,
   location: PropTypes.object.isRequired,
 }
@@ -185,7 +186,7 @@ export const pageQuery = graphql`
                 alt
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 1200, quality: 90) {
+                    fluid(maxWidth: 800, quality: 80) {
                       ...GatsbyImageSharpFluid
                     }
                   }

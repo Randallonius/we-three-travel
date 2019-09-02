@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
+import Headroom from 'react-headroom'
 import { Layout, Listing, Wrapper, HeroImageSliceZone, Header, InstagramListing, Title } from '../components'
 import website from '../../config/website'
-import Headroom from 'react-headroom'
 
 const Hero = styled.header`
   display: flex;

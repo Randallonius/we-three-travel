@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { FiX } from 'react-icons/fi';
-import SlideMapContainer from './SlideMapContainer'
 import Title from '../Title'
+import LeafletMap from '../LeafletMap'
 
 const MenuSlide = styled.div`
   width: 100vw;
@@ -35,7 +35,7 @@ const MenuSlide = styled.div`
     }
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.m})  {
+  @media screen and (min-width: ${props => props.theme.breakpoints.m}) {
     width: 60vw;
 
     &.hide {
@@ -43,7 +43,7 @@ const MenuSlide = styled.div`
     }
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.l})  {
+  @media screen and (min-width: ${props => props.theme.breakpoints.l}) {
     width: 40vw;
 
     &.hide {
@@ -104,7 +104,7 @@ class SlideContainer extends Component {
         <div>
           <CloseButton onClick={this.props.handleClick}><FiX /></CloseButton>
           <Title>Where Have We Been??</Title>
-          <SlideMapContainer />
+          {typeof window !== 'undefined' && <LeafletMap />}
           <Title>Where Are We Right Now??</Title>
           <SubTitle>Grand Rapids, MI</SubTitle>
           <Title>Where Are We Off To Next??</Title>

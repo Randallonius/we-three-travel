@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
 import { HeroImage } from '../slices'
-
-const Content = styled.div`
-  
-`
 
 export default class HeroImageSliceZone extends Component {
   render() {
@@ -17,7 +12,7 @@ export default class HeroImageSliceZone extends Component {
         :
         null
         )
-      return <Content>{slice}</Content>
+      return <div>{slice}</div>
   }
 }
 
