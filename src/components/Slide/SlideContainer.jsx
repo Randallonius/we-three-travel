@@ -81,6 +81,10 @@ const CountryList = styled.ul`
   margin: 0;
 `
 
+const FinishedCountry = styled.li`
+  text-decoration: line-through;
+`
+
 const SLIDE_OPEN_CLASS = "body--slide-open";
 
 class SlideContainer extends Component {
@@ -106,12 +110,12 @@ class SlideContainer extends Component {
           <Title>Where Have We Been??</Title>
           {typeof window !== 'undefined' && <LeafletMap />}
           <Title>Where Are We Right Now??</Title>
-          <SubTitle>London, UK</SubTitle>
+          <SubTitle>Stockholm, Sweden</SubTitle>
           <Title>Where Are We Off To Next??</Title>
           <SubTitle>September</SubTitle>
           <CountryList>
-            <li>Ireland</li>
-            <li>England</li>
+            <FinishedCountry>Ireland</FinishedCountry>
+            <FinishedCountry>England</FinishedCountry>
             <li>Sweden</li>
             <li>Finland</li>
           </CountryList>
@@ -120,6 +124,11 @@ class SlideContainer extends Component {
             <li>Germany</li>
             <li>Austria</li>
             <li>Croatia</li>
+          </CountryList>
+          <SubTitle>November</SubTitle>
+          <CountryList>
+            <li>Italy</li>
+            <li>Spain</li>
           </CountryList>
         </div>
       </MenuSlide>
