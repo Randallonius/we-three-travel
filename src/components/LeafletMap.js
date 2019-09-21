@@ -49,6 +49,7 @@ class LeafletMap extends Component<{}, State> {
       { key: 'marker14', position: [51.5074, -0.1278], content: 'London, UK' },
       { key: 'marker15', position: [51.6903, -0.4181], content: 'Warner Bros Studios, UK' },
       { key: 'marker16', position: [59.3293, 18.0686], content: 'Stockholm, Sweden' },
+      { key: 'marker17', position: [60.4518, 22.2666], content: 'Turku, Finland' },
     ],
   }
 
