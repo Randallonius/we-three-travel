@@ -40,12 +40,6 @@ class LeafletMap extends Component<{}, State> {
   }
 
   render() {
-    // console.log('markers', CountryData.map(m => ({
-    //   key: m.key,
-    //   position: m.position,
-    //   content: m.content,
-    // }))
-    // )
     return (
       <Map center={[51.505, -0.09]} zoom={1}>
         <TileLayer
