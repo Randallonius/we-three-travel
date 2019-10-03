@@ -113,6 +113,24 @@ const CountryData = [
     long: 24.9384,
     content: 'Helsinki, Finland',
   },
+  {
+    key: 'marker20',
+    lat: 55.6761,
+    long: 12.5683,
+    content: 'Copenhagen, Denmark',
+  },
+  {
+    key: 'marker21',
+    lat: 53.0793,
+    long: 8.8017,
+    content: 'Bremen, Germany',
+  },
+  {
+    key: 'marker22',
+    lat: 53.1435,
+    long: 8.2146,
+    content: 'Oldenburg, Germany',
+  },
 ]
 
 export default CountryData
