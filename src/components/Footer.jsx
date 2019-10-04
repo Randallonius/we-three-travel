@@ -83,7 +83,6 @@ class Footer extends Component {
             <FooterTitle>Follow Us</FooterTitle>
             <FooterLinkContainer>
               <p>Want a more social experience?</p>
-              <SocialLink href={`http://www.facebook.com/${website.facebook}`}><FiFacebook /></SocialLink>
               <SocialLink href={`http://www.instagram.com/${website.instagram}`}><FiInstagram /></SocialLink>
             </FooterLinkContainer>
           </FooterContainerInner>
