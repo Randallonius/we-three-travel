@@ -101,7 +101,6 @@ class About extends Component {
               <AboutPageTitle>{aboutpage.data.contact_title.text}</AboutPageTitle>
               <AboutPageContent dangerouslySetInnerHTML={{ __html: aboutpage.data.contact_content.html }} />
               <SocialLinkContainer>
-                <SocialLink href={`http://www.facebook.com/${website.facebook}`}><FiFacebook /></SocialLink>
                 <SocialLink href={`http://www.instagram.com/${website.instagram}`}><FiInstagram /></SocialLink>
                 <SocialLink href={`mailto:${website.email}`}><FiMail /></SocialLink>
               </SocialLinkContainer>
