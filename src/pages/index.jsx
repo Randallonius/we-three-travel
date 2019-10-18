@@ -88,6 +88,7 @@ export default Index
 
 Index.propTypes = {
   data: PropTypes.shape({
+    homepage: PropTypes.object.isRequired,
     posts: PropTypes.object.isRequired,
     instagrams: PropTypes.object.isRequired,
   }).isRequired,

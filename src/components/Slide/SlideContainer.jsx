@@ -110,7 +110,7 @@ class SlideContainer extends Component {
           <Title>Where Have We Been??</Title>
           {typeof window !== 'undefined' && <LeafletMap />}
           <Title>Where Are We Right Now??</Title>
-          <SubTitle>Munich, Germany</SubTitle>
+          <SubTitle>Vienna, Austria</SubTitle>
           <Title>Where Are We Off To Next??</Title>
           <SubTitle>September</SubTitle>
           <CountryList>
@@ -122,7 +122,7 @@ class SlideContainer extends Component {
           </CountryList>
           <SubTitle>October</SubTitle>
           <CountryList>
-            <li>Germany</li>
+            <FinishedCountry>Germany</FinishedCountry>
             <li>Austria</li>
             <li>Croatia</li>
           </CountryList>
