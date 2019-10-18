@@ -143,6 +143,12 @@ const CountryData = [
     long: 11.5820,
     content: 'Munich, Germany',
   },
+  {
+    key: 'marker25',
+    lat: 48.2082,
+    long: 16.3738,
+    content: 'Vienna, Austria',
+  },
 ]
 
 export default CountryData
