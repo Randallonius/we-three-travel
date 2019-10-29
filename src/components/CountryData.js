@@ -161,6 +161,12 @@ const CountryData = [
     long: 15.2314,
     content: 'Zadar, Croatia',
   },
+  {
+    key: 'marker28',
+    lat: 42.6507,
+    long: 18.0944,
+    content: 'Dubrovnik, Croatia',
+  },
 ]
 
 export default CountryData
