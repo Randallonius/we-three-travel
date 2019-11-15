@@ -34,6 +34,7 @@ export default class SliceZone extends Component {
     const slice = allSlices.map(s => {
       switch (s.slice_type) {
         // These are the API IDs of the slices
+        // Add excerpt into this file
         case 'text':
           return <BodyText key={s.id} input={s} />
         case 'code_block':

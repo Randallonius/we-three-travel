@@ -173,6 +173,18 @@ const CountryData = [
     long: 12.4964,
     content: 'Rome, Italy',
   },
+  {
+    key: 'marker30',
+    lat: 40.7462,
+    long: 14.4989,
+    content: 'Pompeii, Italy',
+  },
+  {
+    key: 'marker31',
+    lat: 41.3851,
+    long: 2.1734,
+    content: 'Barcelona, Spain',
+  },
 ]
 
 export default CountryData
