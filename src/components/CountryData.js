@@ -185,6 +185,12 @@ const CountryData = [
     long: 2.1734,
     content: 'Barcelona, Spain',
   },
+  {
+    key: 'marker32',
+    lat: 41.9794,
+    long: 2.8214,
+    content: 'Girona, Spain',
+  },
 ]
 
 export default CountryData
