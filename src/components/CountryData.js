@@ -209,6 +209,12 @@ const CountryData = [
     long: 23.7275,
     content: 'Athens, Greece',
   },
+  {
+    key: 'marker36',
+    lat: 30.0444,
+    long: 31.2357,
+    content: 'Cairo, Egypt',
+  },
 ]
 
 export default CountryData
