@@ -43,7 +43,7 @@
     "gatsby-source-instagram": "^0.5.0",
     "gatsby-source-prismic": "^2.2.0",
     "gatsby-transformer-sharp": "^2.1.13",
-    "jsdom": "^13.2.0",
+    "jsdom": "^16.5.0",
     "leaflet": "^1.5.1",
     "lodash": "^4.17.11",
     "prismic-reactjs": "^0.3.2",
